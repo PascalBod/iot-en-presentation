@@ -1,0 +1,2625 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="icon" href="logoT-32.png">
+
+		<title>IoT</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/pb.css">
+		<link rel="stylesheet" href="pres-style.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		
+		<!-- Matomo -->
+		<script type="text/javascript">
+			var _paq = window._paq = window._paq || [];
+			/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+			_paq.push(['trackPageView']);
+			_paq.push(['enableLinkTracking']);
+			(function () {
+				var u = "//matomo.systev.com/";
+				_paq.push(['setTrackerUrl', u + 'matomo.php']);
+				_paq.push(['setSiteId', '2']);
+				var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+				g.type = 'text/javascript'; g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+			})();
+		</script>
+		<!-- End Matomo Code -->
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section> <h1>IoT and</br> Connected Objects</h1>
+					<h4>Pascal Bodin</h4>
+					<div class="pbverysmall"><a href="https://pascalbod.github.io/iot-fr-presentation/" target="_blank">Version française</a></div>
+				</section>
+				<section> <h2>Document history</h2>
+					<table class="pbsmaller">
+						<thead>
+							<tr>
+								<th>When</th>
+								<th>What</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>19-Jan-2021</td>
+								<td>Version 1.0</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section> <h2>License</h2>
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">
+						<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+						<br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
+				</section>
+				<section><h2>Credits</h2>
+					<ul>
+						<li><a target="_blank" href="https://github.com/hakimel/reveal.js">reveal.js</a> - Copyright (C) 2020 Hakim El Hattab</li>
+						<li><a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></li>
+						<li><a href="https://material.io/resources/icons/?style=baseline" target="_blank">material.io</a></li>
+						<li><a href="https://matomo.org/" target="_blank">Matomo</a></li>
+					</ul>
+				</section>
+				<section> 
+					<section> <h2>Contents</h2>
+					</section>
+					<section> <h3><a href="#/foreword">Foreword</a></h3>
+					</section>
+					<section> <h3><a href="#/introduction">Introduction</a></h3>
+						<ul>
+							<li><a href="#/introduction-1">Some history</a></li>
+							<li><a href="#/introduction-2">Everything is smart</a></li>
+							<li><a href="#/introduction-3">Definition?</a></li>
+						</ul>
+					</section>
+					<section> <h3><a href="#/example">Example used throughout the presentation</a></h3>
+						<ul>
+							<li><a href="#/example-1">Expressed requirements</a></li>
+							<li><a href="#/example-2">Looking at requirements</a></li>
+							<li><a href="#/example-3">Technical fields</a></li>
+							<li><a href="#/example-4">Project management</a></li>
+						</ul>
+					</section>
+					<section> <h3><a href="#/device">Connected device</a></h3>
+						<ul>
+							<li><a href="#/device-1">Our example</a></li>
+							<li><a href="#/device-2">Hardware progress</a></li>
+							<li><a href="#/device-3">Memory, processing power and applications</a></li>
+							<li><a href="#/device-4">Connected device architecture</a></li>
+							<li><a href="#/device-5">Peripherals</a></li>
+							<li><a href="#/device-6">Interfacing</a></li>
+							<li><a href="#/device-7">Software development</a></li>
+							<li><a href="#/device-8">Points to remember</a></li>
+						</ul>
+					</section>
+					<section> <h3><a href="#/positioning">Positioning</a></h3>
+						<ul>
+							<li><a href="#/positioning-1">Our example</a></li>
+							<li><a href="#/positioning-2">GNSS</a></li>
+							<li><a href="#/positioning-3">Positioning with a fixed infrastructure</a></li>
+							<li><a href="#/positioning-4">Dead reckoning</a></li>
+							<li><a href="#/positioning-5">Indoors</a></li>
+							<li><a href="#/positioning-6">Points to remember</a></li>
+						</ul>
+					</section>
+					<section> <h3><a href="#/communications">Communications</a></h3>
+						<ul>
+							<li><a href="#/communications-1">Our example</a></li>
+							<li><a href="#/communications-2">Land mobile networks</a></li>
+							<li><a href="#/communications-3">Unlicensed LPWAN</a></li>
+							<li><a href="#/communications-4">Satellite networks</a></li>
+							<li><a href="#/communications-5">PMR networks</a></li>
+							<li><a href="#/communications-6">Short distance radiocommunications</a></li>
+							<li><a href="#/communications-7">Data interchange</a></li>
+							<li><a href="#/communications-8">Integration in the Internet</a></li>
+							<li><a href="#/communications-9">Points to remember</a></li>
+						</ul>
+					</section>
+					<section> <h3><a href="#/architecture">Architecture</a></h3>
+						<ul>
+							<li><a href="#/architecture-1">Distributed processing</a></li>
+							<li><a href="#/architecture-2">Layered architecture</a></li>
+							<li><a href="#/architecture-3">Platforms</a></li>
+						</ul>
+					</section>
+					<section> <h3><a href="#/security">Security</a></h3>
+						<ul>
+							<li><a href="#/security-1">Goals</a></li>
+							<li><a href="#/security-2">Attack surface</a></li>
+							<li><a href="#/security-3">How to deal with attacks</a></li>
+							<li><a href="#/security-4">Points to remember</a></li>
+						</ul>
+					</section>
+					<section> <h3><a href="#/project">Project management</a></h3>
+						<ul>
+							<li><a href="#/project-1">Usual industrial project</a></li>
+							<li><a href="#/project-2">Connected objects project</a></li>
+							<li><a href="#/project-3">Problems</a></li>
+							<li><a href="#/project-4">Possible solution: be agile</a></li>
+							<li><a href="#/project-5">Adaptation to a connected objects project</a></li>
+						</ul>
+					</section>
+					<section> <h3><a href="#/conclusion">Conclusion</a></h3>
+					</section>
+				</section>
+				<section>
+					<section id="foreword"> <h2>Foreword</h2>
+					</section>
+					<section> <h3>Who am I?</h3>
+						<ul>
+							<li>50% independent consultant - connected devices</li>
+							<li>50% senior software engineer, as employee</li>
+							<li>First connected devices project in 1990</li>
+						</ul>
+					</section>
+					<section> <h3>More information</h3>
+						<ul>
+							<li><a href="https://fr.systev.com" target="_blank">Systev</a></li>
+							<li><a href="https://twitter.com/pascalbod06" target="_blank">Twitter</a></li>
+							<li><a href="https://www.linkedin.com/in/pascalbodin/" target="_blank">LinkedIn</a></li>
+							<li><a href="https://github.com/PascalBod" target="_blank">GitHub</a></li>
+						</ul>
+					</section>
+					<section> <h3>Integrator's point of view</h3>
+						<ul>
+							<li>Deliver on committed date and committed budget</li>
+							<li>Deliver a working system</li>
+							<li>Sometimes: integrate legacy subsystems</li>
+							<li>Deliver a maintainable system</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Target: customer satisfaction</li>
+							<li>Solving technical problems is only a means</li>
+						</ul>
+					</section>
+					<section> <h3>Which systems ?</h3>
+						<ul>
+							<li>Consumer systems</li>
+							<li>Industrial systems</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li><del>Consumer systems</del></li>
+							<li>Industrial systems</li>
+						</ul>
+					</section>
+					<section> <h3>Industrial systems:</h3>
+						<ul>
+							<li>Feature-rich</li>
+							<li>Technical complexity</li>
+							<li>More constraints (real time, security, maintainability, etc.)</li>
+						</ul>
+					</section>
+				</section>
+				<section> 
+					<section id="introduction"> <h2>Introduction</h2>
+					</section>
+					<section id="introduction-1"> <h3>Some history</h3>
+					</section>
+					<section> <h4>Before the '90s</h4>
+						<img src="images/scada.svg">
+						<p class="pbcenter">SCADA (Supervisory Control And Data Acquisition)</p>
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+						<div class="pbverysmall">Icons from  <a href="https://material.io/resources/icons/?style=baseline" target="_blank">material.io</a></div>
+					</section>
+					<section> <h4>In the '90s</h4>
+						<img src="images/m2m.svg" height="400">
+						<p class="pbcenter">M2M (Machine to Machine)</br>
+						LBS (Location Based Services)</p>
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a>, <a href="https://www.flaticon.com/authors/photo3idea-studio" target="_blank">photo3idea_studio</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+						<div class="pbverysmall">Icons from  <a href="https://material.io/resources/icons/?style=baseline" target="_blank">material.io</a></div>
+					</section>
+					<section> <h4>In the '00s</h4>
+						<img src="images/iot.svg">
+						<p class="pbcenter">IoT (Internet of Things)</p>
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+						<div class="pbverysmall">Icons from  <a href="https://material.io/resources/icons/?style=baseline" target="_blank">material.io</a></div>
+					</section>
+					<section id="introduction-2"> <h4>In the '10s</h4>
+						<ul>
+							<li>Smart Agriculture</li>
+							<li>Smart City</li>
+							<li>Smart Environment</li>
+							<li>Smart Health</li>
+							<li>Smart Industry</li>
+							<li>Smart Utilities</li>
+							<li>...</li>
+						</ul>
+					</section>
+					<section id="introduction-3"> <h4>Definition?</h4>
+						<blockquote>
+							The Internet of things (IoT) describes the network of physical objects ("things") that are embedded with sensors, 
+							software, and other technologies for the purpose of connecting and exchanging data with other devices and systems 
+							over the Internet.
+						</blockquote>
+						<div class="pbverysmall">Source: <a href="https://en.wikipedia.org/wiki/Internet_of_things" target="_blank">Wikipedia</a></div>
+					</section>
+					<section> <h4>The topic of this presentation</h4>
+						<p>Systems where objects are connected to some remote applications</p>
+						<p>&rArr; Broader than the above definition</p>
+					</section>
+					<section> <h4>Inventor of <em>IoT</em> acronym</h4>
+						<p class="pbcenter">Kevin Ashton - 1999</p>
+					</section>
+					<section>
+						<h4>Points to remember</h4>
+						<ul>
+							<li>No real definition - too broad a topic</li>
+							<li>Systems were existing before the <em>IoT</em> acronym</li>
+							<li>Large diversity of user needs</li>
+							<li>Different technologies</li>
+						</ul>
+					</section>
+				</section>
+				<section> 
+					<section id="example"> <h2>Example used throughout the presentation</h2>
+					</section>
+					<section id="example-1"> <h3>Expressed requirements</h3>
+						<ul>
+							<li>Monitor a convoy of 5 vehicles over Europe</li>
+							<li>Transmit an alarm when:</li>
+								<ul>
+									<li>The distance between 2 consecutive vehicles exceeds a limit</li>
+									<li>A driver presses an emergency button</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>When an alarm occurs:
+								<ul>
+									<li>Display the alarm at the operations center</li>
+									<li>Live display of the positions of every vehicle until the end of the alarm</li>
+									<li>Audio monitoring</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Outdoor coverage must be global</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/convoy.png" height="600">
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section id="example-2"> <h3>Looking at requirements</h3>
+						<ul>
+							<li>What is the average distance between vehicles?</li>
+							<li>Should the distance limit be modifiable?</li>
+							<li>Which accuracy?</li>
+							<li>How to handle road traffic constraints?</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Alarm reception delay?</li>
+							<li>Alarm shutdown procedure?</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Installation of equipments in the vehicles?</li>
+							<li>Power supply?</li>
+							<li>Limitations for installation of external components (antennas)?</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section id="example-3"> <h3>Technical fields</h3>
+						<ul>
+							<li>Distance between vehicles: sensors, GNSS...</li>
+							<li>Manual alarm triggering: sensor</li>
+							<li>Alarm transmission: wireless network</li>
+							<li>Embedded / onboard devices</li>
+							<li>Vehicle tracking: GNSS, GIS...</li>
+							<li>Global coverage: land mobile networks, satellite...</li>
+							<li>Confidenciality, integrity, availability</li>
+							<li>Software</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/domains.png">
+					</section>
+					<section id="example-4"> <h3>Project management</h3>
+						<ul>
+							<li>Many use cases</li>
+							<li>Often difficult to get the real needs</li>
+							<li>Several technical fields</li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">We will see in detail all these elements...</p>
+					</section>
+				</section>
+				<section>
+					<section id="device"> <h2>Connected device</h2>
+					</section>
+					<section id="device-1"> <h3>Our example</h3>
+					</section>
+					<section>
+						<img src="images/exampleEmbeddedDevice.svg">
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Handle the sensors: alarm, distance, position...</li>
+							<li>Handle communication means</li>
+							<li>Handle security</li>
+							<li>Handle business aspects</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section>
+						<p>More generally:</p>
+						<ul>
+							<li>Interfacing with peripherals</li>
+							<li>Performing processing</li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">&rArr; A computer!</p>
+					</section>
+					<section>
+						<p>Vocabulary used hereafter:</p>
+						<ul>
+							<li><em>Connected object</em> = one vehicle of our example</li>
+							<li><em>Connected device</em> = the communicating electronic element installed in the vehicle</li>
+						</ul>
+					</section>
+					<section id="device-2"> <h3>Hardware progress</h3>
+					</section>
+					<section> <h4>1985 - the world most powerful computer</h4>
+						<img src="images/cray2.jpg">
+						<div class="pbverysmall">Source: <a href="https://images.nasa.gov/details-ARC-1986-AC86-0746-2" title="NASA" target="_blank">NASA</a></div>
+					</section>
+					<section>
+						<p>Cray-2</p>
+						<ul>
+							<li>1,9 GFLOPS (giga floating-point operations per second)</li>
+							<li>38 millions US$ (in 2020)</li>
+						</ul>
+					</section>
+					<section> <h4>2020 - iPhone 11</h4>
+						<img src="images/iphone11.png">
+						<div class="pbverysmall">Source: <a href="https://www.apple.com/fr/iphone-11/" title="Apple" target="_blank">Apple</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>155 GFLOPS</li>
+							<li>850 US$</li>
+						</ul>
+					</section>
+					<section>
+						<p>In 35 years: </p>
+						<ul>
+							<li>Processing power multiplied by around 70</li>
+							<li>Cost divided by around 38000</li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">What do the years to come have in store?!</p>
+					</section>
+					<section id="device-3"> <h3>Memory, processing power and applications</h3>
+					</section>
+					<section> <h4>1969 - the computer that allowed to land on the Moon</h4>
+						<img src="images/agc_dsky.jpg">
+						<div class="pbverysmall">Source: <a href="http://klabs.org/history/history_docs/mit_docs/agc.htm" title="klabs.org" target="_blank">klabs.org</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Weight: aroung 32 kg (without the user interface)</li>
+							<li>Power supply: 28 V CC - 70 W</li>
+							<li>Permanent memory: 36 Kwords</li>
+							<li>Erasable memory: 2 Kwords</li>
+							<li>Clock: 1 MHz (83 kHz instruction cycle time)</li>
+							<li>Simple operating system, with priority handling</li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">Compared to current configurations:</p>
+						<ul>
+							<li>Very little memory</li>
+							<li>Very little processing power</li>
+						</ul>
+						<p>Yet it allowed to bring human beings to the Moon</p>
+					</section>
+					<section>
+						<p class="pbcenter">Embedded software engineers can make a lot with only a few resources &#x1F642;</p>
+					</section>
+					<section id="device-4"> <h3>Connected device architecture</h3>
+						<img src="images/deviceArchitecture.png">
+					</section>
+					<section>
+						<ul>
+							<li>Microcontroller</li>
+							<li>Communication</li>
+							<li>Interfaces with external peripherals (sensors, actuators)</li>
+							<li>Optionnally :
+								<ul>
+									<li>Power supply management (battery...)</li>
+									<li>Positioning</li>
+									<li>User interface</li>
+									<li>Peripherals (sensors...)</li>
+									<li>Data storage</li>
+							</ul></li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Not on the figure: possible additional memory, outside of the microcontroller</li>
+						</ul>
+					</section>
+					<section> <h4>Reminder : computer architecture</h4>
+						<img src="images/computerArchitecture.png">
+					</section>
+					<section>
+						<img src="images/computerMemory.png">
+					</section>
+					<section>
+						<img src="images/computerVirtualMemory.png">
+					</section>
+					<section> <h4>Microcontroller</h4>
+						<ul>
+							<li>A computer in a chip:
+								<ul>
+									<li>Central Processing Unit (CPU)</li>
+									<li>Read-only memory (Flash memory)</li>
+									<li>Read/write memory (RAM - Random Access Memory)</li>
+									<li>Peripherals:
+										<ul>
+											<li>Analog I/O</li>
+											<li>Digital I/O</li>
+											<li>Timers</li>
+											<li>Serial links</li>
+											<li>Serial buses</li>
+											<li>Watchdog</li>
+											<li>etc.</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Flash memory: invented at the end of the '80s</li>
+							<li>Before:
+								<ul>
+									<li>ROM - Read-Only Memory</li>
+									<li>PROM - Programmable Read-Only Memory</li>
+									<li>EPROM - Erasable Programmable Read-Only Memory</li>
+									<li>EEPROM/EE2PROM - Electrically Erasable Programmable Read-Only Memory</li>
+								</ul>
+							</li>
+							<li>"ROM": nowadays, also used for Flash memory</li>
+						</ul>
+					</section>
+					<section> <h4>Example of a microcontroller architecture</h4>
+						<img src="images/stm32l073xz_192k-medium.jpg">
+						<div class="pbverysmall">Source: <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32l073rz.html" title="ST" target="_blank">ST</a></div>
+					</section>
+					<section>
+						<img src="images/stm32l073rz.png" height="600">
+					</section>
+					<section> <h4>Microcontroller [board] memory</h4>
+						<img src="images/microcontrollerBoardMemory.png" height="500">
+					</section>
+					<section> <h4>Bootloader/bootstrap</h4>
+						<ul>
+							<li>Computer: bootstrap (some code in ROM loads some code from a disk that will load the OS)</li>
+							<li>Microcontroller board: bootloader (optional - allows easy software update)</li>
+						</ul>
+					</section>
+					<section> <h4>Important characteristics?</h4>
+						<ul>
+							<li>Depend on the application!</li>
+							<li>Example: 
+								<ul>
+									<li>Secure element</li>
+									<li>Hardware encryption</li>
+									<li>Analog blocks</li>
+									<li>Instruction cycle time</li>
+									<li>Memory (size, type, expandable...)</li>
+									<li>Registers size (8/16/32 bits)</li>
+									<li>RISC/CISC</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section> <h4>Hardware tools</h4>
+						<ul>
+							<li>Development board</li>
+							<li>Programmer, debugger</li>
+							<li>Open source hardware</li>
+						</ul>
+					</section>
+					<section> <h4>Software tools</h4>
+						<ul>
+							<li>Cross-compilation toolchain</li>
+							<li>Integrated Development Environment (IDE)</li>
+							<li>Open source software</li>
+						</ul>
+					</section>
+					<section> <h4>Support</h4>
+						<ul>
+							<li>Professional support</li>
+							<li>Active community (forums, examples...)</li>
+						</ul>
+					</section>
+					<section> <h4>Microcontroller example</h4>
+						<h5>STM32L073RZ</h5>
+						<ul>
+							<li>Registers size: 32 bits</li>
+							<li>Flash: 192 Ko - RAM : 20 Ko</li>
+							<li>Clock: 32 MHz</li>
+							<li>Peripherals: see architecture diagram</li>
+							<li>Price: US$ 5.26 (1) - US$ 2.17 (10000)</li>
+						</ul>
+					</section>
+					<section> <h5>Development board</h5>
+						<img src="images/nucleo-l073rg.png">
+						<p class="pbcenter">US$ 13</p>
+						<div class="pbverysmall">Source: <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32l073rz.html" title="ST" target="_blank">ST</a></div>
+					</section>
+					<section> <h5>Integrated Development Environment (IDE)</h5>
+						<ul>
+							<li>Free, based on Eclipse</li>
+							<li>Microcontroller configuration</li>
+							<li>Development, flashing, debugging</li>
+							<li>Extension packages</li>
+						</ul>
+					</section>
+					<section id="device-5"> <h3>Peripherals</h3>
+					</section>
+					<section> <h4>Sensors</h4>
+						<ul>
+							<li>Pressure</li>
+							<li>Temperature</li>
+							<li>Light level</li>
+							<li>Magnetic field</li>
+							<li>Gas flow</li>
+							<li>Tilt</li>
+							<li>Acceleration</li>
+							<li>Contact</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section> <h4>Actuators</h4>
+						<ul>
+							<li>Relay</li>
+							<li>Motor</li>
+							<li>Stepper motor</li>
+							<li>Servomotor</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section> <h4>Other peripherals</h4>
+						<ul>
+							<li>Printer</li>
+							<li>Display</li>
+							<li>OBD connector (On-Board Diagnostics)</li>
+							<li>RFID tag reader</li>
+							<li>etc. etc. etc.</li>
+						</ul>
+					</section>
+					<section id="device-6"> <h3>Interfacing</h3>
+					</section>
+					<section> <h4>GPIO (General Purpose digital Input Output)</h4>
+						<img src="images/gpio_high_low.png">
+						<div class="pbverysmall">Source: <a href="https://oldwiki.archive.openwrt.org/doc/hardware/port.gpio" title="OpenWrt" target="_blank">OpenWrt</a></div>
+					</section>
+					<section>
+						<p class="pbcenter">It may be required to add:</p>
+						<ul>
+							<li>Optocoupler</li>
+							<li>Relay</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section> 
+						<p class="pbcenter">Our example:</p>
+						<ul>
+							<li>Alarm button (input)</li>
+							<li>Door opening (input)</li>
+							<li>Indication of an ongoing alarm (LED) (output)</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section> <h4>Analog/digital conversion (ADC)</h4>
+						<img src="images/adc.png">
+					</section>
+					<section>
+						<ul>
+							<li>Converting a continuous value into a discrete value</li>
+							<li>Resolution: number of possible discrete values, or number of required bits</li>
+							<li>Sampling frequency: number of conversions per second</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>It may be required to amplify the analog signal</li>
+							<li>Some microcontrollers include operational amplifiers (PIC16F527, PSoC 4, etc.)</li>
+						</ul>
+					</section>
+					<section> 
+						<p class="pbcenter">Our example:</p>
+						<ul>
+							<li>Distance measurement</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section> <h4>Digital/analog conversion (DAC)</h4>
+						<img src="images/dac.png">
+					</section>
+					<section> 
+						<p class="pbcenter">Our example:</p>
+						<ul>
+							<li>Siren modulation</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section> <h4>Serial connection</h4>
+						<ul>
+							<li>At least 3 wires: <b>Transmit</b>, <b>Receive</b>, <b>Ground</b></li>
+							<li>Additional wires possible: <b>Request to send</b>, <b>Ready for sending</b>, etc.</li>
+							<li>Wires definition: <b>V.24</b> (<b>RS232</b> in the USA)</li>
+						</ul>
+					</section>
+					<section>
+						<p>Electrical levels:</p>
+						<ul>
+							<li>V.28 and RS232 : -15 V to -3 V and +3 V to +15 V</li>
+							<li>0 and 5 V</li>
+							<li>0 and 3,3 V</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Distance (V.28 and RS232): < 15 m</li>
+							<li>Maximum speed: 20 kb/s (according to V.28)</li>
+							<li>On short distances: 115 kb/s or more</li>
+						</ul>
+					</section>
+					<section>
+						<p>V.28 and RS232 connectors: DB9 or DB25 D-subminiature connectors</p>
+						<img src="images/db9male-medium.png" width="250">
+						<img src="images/db25male-medium.png" width="300">
+						<div class="pbverysmall">Source: <a href="https://eu.mouser.com/Connectors/D-Sub-Connectors/D-Sub-Standard-Connectors/_/N-9gybx" title="Mouser" target="_blank">Mouser</a></div>
+					</section>
+					<section>
+						<p>For current computers, serial-USB adapters</p>
+						<img src="images/ftdi-TTL-232R1.png">
+						<div class="pbverysmall">Source: <a href="https://www.ftdichip.com/Products/Cables/USBTTLSerial.htm" title="FTDI" target="_blank">FTDI</a></div>
+					</section>
+					<section>
+						<img src="images/uart-db9.png">
+						<div class="pbverysmall">Source: <a href="https://eu.mouser.com/Connectors/D-Sub-Connectors/D-Sub-Standard-Connectors/_/N-9gybx" title="Mouser" target="_blank">Mouser</a></div>
+					</section>
+					<section>
+						<p>Data transfer:</p>
+						<img src="images/serialCommFormat.png">
+					</section>
+					<section>
+						<p class="pbcenter">Important:</p>
+						<ul>
+							<li>Each side must be configured in the same way (speed, parity, etc.)</li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">Our example:</p>
+						<ul>
+							<li>Transceivers control</li>
+							<li>Satellite positioning receiver control</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section> <h4>SPI (Serial Peripheral Interface)</h4>
+						<img src="images/spi.png">
+						<div class="pbverysmall">Source: <a href="https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi" title="sparkfun" target="_blank">sparkfun</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Synchronous communications: clock and data</li>
+							<li>Master/slave</li>
+							<li>4 wires: 
+								<ul>
+									<li>Clock</li>
+									<li>Data, from master to slave</li>
+									<li>Data, from slave to master</li>
+									<li>Slave selection</li>
+								</ul>
+							</li>
+							<li>Full duplex</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/spiSlaves.png">
+						<div class="pbverysmall">Source: <a href="https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi" title="sparkfun" target="_blank">sparkfun</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Master side: one selection wire per slave</li>
+							<li>A decoder can be used, or slaves can be chained</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Maximum speed: a few Mb/s</li>
+							<li>Maximum distance: a few tens of cm </li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">Our example:</p>
+						<ul>
+							<li>Display</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section> <h4>I2C (Inter-Integrated Circuit)</h4>
+						<img src="images/i2c.png">
+						<div class="pbverysmall">Source: <a href="https://learn.sparkfun.com/tutorials/i2c" title="sparkfun" target="_blank">sparkfun</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Synchronous communications: clock and data</li>
+							<li>Multi-master</li>
+							<li>2 wires:
+								<ul>
+									<li>Clock</li>
+									<li>Data</li>
+								</ul>
+							</li>
+							<li>Half duplex</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>A master can determine whether the bus is idle or not &rArr; arbitration</li>
+						</ul>
+					</section>
+					<section>
+						<p>Write operation:</p>
+						<img src="images/i2cWrite.png">
+						<div class="pbverysmall">Source: <a href="https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bma280-ds000.pdf" title="Bosch Sensortec" target="_blank">Bosch Sensortec</a></div>					
+					</section>
+					<section>
+						<p>Read operation:</p>
+						<img src="images/i2cRead.png">
+						<div class="pbverysmall">Source: <a href="https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bma280-ds000.pdf" title="Bosch Sensortec" target="_blank">Bosch Sensortec</a></div>					
+					</section>
+					<section>
+						<ul>
+							<li>Maximum speed: a few Mb/s</li>
+							<li>Maximum length: a few tens of cm </li>
+						</ul>
+					</section>
+					<section> <h4>CAN (Controller Area Network)</h4>
+						<img src="images/canBus.png">
+						<div class="pbverysmall">Source: <a href="https://www.embien.com/blog/working-automotive-can-protocol/" title="embien" target="_blank">embien</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Designed for vehicles</li>
+							<li>Multi-master</li>
+							<li>Bus access: CSMA/CD+AMP (Carrier Sense Multiple Access / Collision Detection with Arbitration on Message Priority)</li>
+							<li>Maximum speed: 1 Mb/s</li>
+							<li>Maximum distance: a few hundreds of m (for low speed)</li>
+						</ul>
+					</section>
+					<section> <h4>Radio</h4>
+						<p class="pbcenter">See <em>Communications</em> section</p>
+					</section>
+					<section id="device-7"> <h3>Software development</h3>
+					</section>
+					<section> <h4>Cross development</h4>
+						<img src="images/crossDev.png">
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section>
+						<p>With the computer:</p>
+						<ul>
+							<li>Edit source-code</li>
+							<li>Cross build (cross compile and link)</li>
+							<li>Emulate and debug</li>
+						</ul>
+					</section>
+					<section>
+						<p>With the computer and the microcontroller board:</p>
+						<ul>
+							<li>Program the Flash memory</em></li>
+							<li>Debug</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Every microcontroller manufacturer: full development environnement</li>
+							<li>Often free</li>
+							<li>Often based on Open Source software (Eclipse, gcc, etc.)</li>
+						</ul>
+					</section>
+					<section> <h4>Execution environments</h4>
+					</section>
+					<section> <h5>Operating System - OS</h5>
+						<ul>
+							<li>Mainly: Linux</li>
+							<li>Similar to a desktop computer:
+								<ul>
+									<li>Package manager</li>
+									<li>Graphical user interface is possible</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">Minimum required memory:</p>
+						<ul>
+							<li>RAM: a few MB or a few tens of MBs</li>
+							<li>Depends on applications</li>
+						</ul>
+						<p class="pbcenter">Usually:</p>
+						<ul>
+							<li>RAM: from 512 MB to 8 GB</li>
+							<li>Flash card: from 1 GB to 8 GB</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Linux typically requires an MMU (Memory Management Unit)</li>
+							<li>The kernel can be configured to work without one</li>
+								<ul>
+									<li>Thanks to μClinux project</li>
+									<li>Beware about applications compatibility</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/embeddedOS.png">
+						<div class="pbverysmall">Sources: <a href="https://isc.tamu.edu/~lewing/linux/" title="Larry Ewing" target="_blank">Larry Ewing</a>,
+						<a href="https://www.yoctoproject.org/" title="YP" target="_blank">YP</a>,
+						<a href="https://legato.io/" title="Legato" target="_blank">Legato</a>,
+						<a href="https://archlinuxarm.org/" title="Arch Linux ARM" target="_blank">Arch Linux ARM</a>,
+						<a href="https://openwrt.org/" title="OpenWrt Project" target="_blank">OpenWrt Project</a>,
+						<a href="https://www.balena.io/os/" title="balenaOS" target="_blank">balenaOS</a>,
+						<a href="https://www.windriver.com/products/linux/" title="Wind River" target="_blank">Wind River</a>,
+						<a href="https://www.digi.com/resources/documentation/digidocs/embedded/index.html" title="Digi Embedded" target="_blank">Digi Embedded</a>,
+						<a href="https://www.mvista.com/" title="MontaVista" target="_blank">MontaVista</a>,
+						<a href="https://www.lynx.com/products/lynx-mosaic-modular-development-framework" title="LYNX MOSA.ic" target="_blank">LYNX MOSA.ic</a>,
+						</div>
+					</section>
+					<section>
+						<ul>
+							<li><a href="https://www.yoctoproject.org/" title="yocto" target="_blank">Yocto</a>: allows creation of Linux distributions
+							<ul>
+								<li>&rArr; <a href="https://legato.io/" title="Legato" target="_blank">Legato</a>, 
+									<a href="https://www.balena.io/os/" title="balenaOS" target="_blank">balenaOS</a>,
+									<a href="https://www.windriver.com/products/linux/" title="Wind River" target="_blank">Wind River Linux</a>,
+									<a href="https://www.digi.com/resources/documentation/digidocs/embedded/dey/3.0/cc6ul/index.html" title="Digi Embedded Yocto" target="_blank">Digi Embedded Yocto</a>,
+									<a href="https://www.yoctoproject.org/members/montavista/" title="MontaVista Linux" target="_blank">MontaVista Linux</a>
+								 </li>
+							</ul></li>
+							<li><a href="https://www.balena.io/os/" title="balenaOS" target="_blank">balenaOS</a>: Docker containers</li>
+							<li><a href="https://www.lynx.com/products/lynx-mosaic-modular-development-framework" title="LYNX MOSA.ic" target="_blank">LYNX MOSA.ic</a>: hypervisor</li>
+						</ul>
+					</section>
+					<section>
+						<p>This type of environment targets boards similar to desktop computer motherboards.</p>
+					</section>
+					<section> <h5>Real-Time Operating System (RTOS)</h5>
+						<ul>
+							<li>Allows for a deterministic response time</li>
+							<li>Uses very little memory</li>
+							<li>No way to add a new application without rebuilding and reflashing</li>
+						</ul>
+					</section>
+					<section>
+						<p>Minimum required memory:</p>
+						<ul>
+							<li>RAM: a few KB</li>
+							<li>Flash: a few KB</li>
+							<li>Depends on the application</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/rtos.png">
+						<div class="pbverysmall">Sources: <a href="https://www.freertos.org/index.html" title="FreeRTOS" target="_blank">FreeRTOS</a>,
+							<a href="https://www.ecoscentric.com/ecos/index.shtml" title="eCos" target="_blank">eCos</a>,
+							<a href="https://github.com/contiki-ng/contiki-ng" title="Contiki-NG" target="_blank">Contiki-NG</a>,
+							<a href="http://riot-os.org/" title="RIOT" target="_blank">RIOT</a>,
+							<a href="https://blackberry.qnx.com/en" title="QNX" target="_blank">QNX</a>,
+							<a href="https://os.mbed.com/mbed-os/" title="Mbed OS" target="_blank">Mbed OS</a>,
+							<a href="https://www.rt-thread.io/index.html" title="RT-Thread" target="_blank">RT-Thread</a>,
+							<a href="https://www.zephyrproject.org/" title="Zephyr" target="_blank">Zephyr</a>,
+							<a href="https://docs.microsoft.com/en-us/azure/rtos/threadx/" title="ThreadX" target="_blank">ThreadX</a>,
+							<a href="https://www.micrium.com/rtos/" title="µC/OS" target="_blank">µC/OS</a>,
+							<a href="https://microware.com/" title="OS-9" target="_blank">OS-9</a>,
+							<a href="https://mynewt.apache.org/" title="Mynewt" target="_blank">Mynewt</a>,
+							<a href="https://www.windriver.com/products/vxworks/" title="VxWorks" target="_blank">VxWorks</a>,
+							<a href="https://www.mentor.com/embedded-software/nucleus/" title="Nucleus" target="_blank">Nucleus</a>,
+							<a href="https://www.huawei.com/minisite/liteos/en/about.html" title="LiteOS" target="_blank">LiteOS</a>,
+							<a href="https://www.lynx.com/products/lynxos-posix-real-time-operating-system-rtos" title="LynxOS" target="_blank">LynxOS</a>,
+							<a href="https://www.zerynth.com/zos/" title="Zerynth OS" target="_blank">Zerynth OS</a>
+						</div>
+					</section>
+					<section>
+						<ul>
+							<li>FreeRTOS acquired by Amazon</li>
+							<li>ThreadX acquired by Microsoft</li>
+							<li>Google and Facebook support Zephyr</li>
+						</ul>
+					</section>
+					<section>
+						<p>Available services:</p>
+						<ul>
+							<li>Threads/tasks</li>
+							<li>Synchronization and communication:
+								<ul>
+									<li>Messages and queues</li>
+									<li>Semaphores</li>
+									<li>Events groups</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+							<li>Timers</li>
+							<li>Memory allocation</li>
+							<li>etc.</li>
+						</ul>
+						<p>Similar to what is provided by an OS</p>
+					</section>
+					<section> <h5>Bare metal</h5>
+						<ul>
+							<li>No OS, no RTOS, directly on the microcontroller</li>
+							<li>There may be an abstraction layer:
+								<ul>
+									<li>&rArr; compatibility over a family of microcontrollers</li>
+									<li>Arm: CMSIS</li>
+									<li>ST: HAL, LL</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/stm32l073rz.png" height="600">
+					</section>
+					<section>
+						<p>Every peripheral may generate an interruption (of the running code) to signal an event: </p>
+						<ul>
+							<li>Serial link: 
+								<ul>
+									<li>reception of bytes</li>
+									<li>end of transmission of bytes</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+							<li>GPIO:
+								<ul>
+									<li>input going from 0 to 1 or from 1 to 0</li>
+								</ul>
+							</li>
+							<li>Timer:
+								<ul>
+									<li>timeout</li>
+								</ul>
+							</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section>
+						<p>For every type of interruption, the developer specifies the functions to be called</p>
+						<ul>
+							<li>ISR: Interrupt Service Routine - written by the developer</li>
+							<li>Must be short</li>
+							<li>Usually: records event information for a processing loop</li>
+							<li>The processing loop (background task) process the information</li>
+						</ul>
+					</section>
+					<section>
+						<p>Analogy: phone calls processing depending on caller importance</p>
+						<ul>
+							<li>A list provides the importance of every caller:</li>
+								<ul>
+									<li>Important - to be called back immediately</li>
+									<li>Ordinary - to be called backed when possible</li>
+								</ul>
+							</li>
+							<li>A list contains the important calls, ordered by call time, that could not be answered</li>
+							<li>A list contains the ordinary calls, ordered by call time, that could not be answered</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Reception of a call while no ongoing call: write down the number and call it back</li>
+							<li>Reception of a call while ongoing call:</li>
+								<ul>
+									<li>If ongoing call is ordinary and incoming call is important: hang up and call back</li>
+									<li>If ongoing call is ordinary and incoming call is ordinary: add the calling number to the list of ordinary calls</li>
+									<li>If ongoing call is important and incoming call is important: add the calling number to the list of important calls</li>
+									<li>If ongoing call is important and incoming call is ordinary: add the calling number to the list of ordinary calls</li>
+								</ul>
+							</li>
+							<li>After hang up:
+								<ul>
+									<li>If list of important calls is not empty, call the first number</li>
+									<li>Else if list of ordinary calls is not empty, call the first number</li>
+									<li>Else start a nap</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">Questions:</p>
+						<ol>
+							<li>What happens to ordinary calls interrupted by an important call?</li>
+							<li>What happens to ordinary calls if there is always an incoming important call during an ongoing call?</li>
+						</ol>
+					</section>
+					<section>
+						<p class="pbcenter">Answers:</p>
+						<ol>
+							<li>The end of the call is lost</li>
+							<li>The ordinary calls are no more processed</li>
+						</ol>
+					</section>
+					<section>
+						<img src="images/backgroundTaskInterrupts.png">
+					</section>
+					<section>
+						<p>With more details:</p>
+						<img src="images/backgroundIntDetailed.png">
+					</section>
+					<section>
+						<ul>
+							<li>There may be more than one interrupt per task</li>
+							<li>Priority management may be complex</li>
+							<li>If only a few events, the background task does not have a lot to do (unless some events require a heavy processing)</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/backgroundIntSleep.png">
+					</section>
+					<section>
+						<ul>
+							<li>Entering a sleep mode is important for devices without external power supply</li>
+							<li>Usually, several different sleep modes</li>
+							<li>The part(s) generating events must be kept active</li>
+						</ul>
+					</section>
+					<section> <h3>Our example</h3>
+						<ul>
+							<li>Which device to choose?
+								<ul>
+									<li>Processing power</li>
+									<li>Memory size</li>
+									<li>Interfaces</li>
+									<li>Peripherals</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Software?
+								<ul>
+									<li>OS / RTOS / bare metal</li>
+									<li>Remote software update</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Detailed information is required</li>
+								<ul>
+									<li>On peripherals to be handled</li>
+									<li>On business functions to be implemented</li>
+								</ul>
+							</li>
+							<li>Keep some flexibility</li>
+							<li>Beware: reducing device and peripherals cost can be expensive later on (see later)</li>
+						</ul>
+					</section>
+					<section id="device-8"> <h3>Points to remember</h3>
+						<ul>
+							<li>Embedded device: complex domain</li>
+							<li>A mix of analog electronics, digital electronics and computer science</li>
+							<li>Software development: very specific</li>
+							<li>Rapid progression of hardware</li>
+							<li>Long lifetime of systems</li>
+							<li>Slow progression of software</li>
+							<li>Growing importance of free hardware and software</li>
+							<li>Communication adds complexity: see below</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section id="positioning"> <h2>Positioning</h2>
+					</section>
+					<section id="positioning-1"> <h3>Our example</h3>
+					</section>
+					<section>
+						<img src="images/convoy.png"  height="600">
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Tracking on alarm</li>
+							<li>Distance between two vehicles:
+								<ul>
+									<li>Location of every vehicle</li>
+									<li>Exchange of locations</li>
+									<li>Calculation of distances</li>
+									<li>Question: which precision?</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section id="positioning-2"> <h3>GNSS (Global Navigation Satellite System)</h3>
+					</section>
+					<section>
+						<img src="images/gnssCircles.png" height="600">
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section>
+						<p>Principle:</p>
+						<ul>
+							<li>Satellite constellation</li>
+							<li>Every satellite transmits messages</li>
+							<li>Receiver, where location is to be calculated</li>
+							<li>Messages contains satellite time and location</li>
+							<li>Satellite time very accurate (atomic clock)</li>
+							<li>With 3 satellites: location estimate</li>
+							<li>With a 4<sup>th</sup>satellite: synchronization of receiver clock</li>
+							<li>&rArr; Location</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Duration/distance : 1 m &hArr; 3,3 ns</li>
+							<li>Possible sources of errors:
+								<ul>
+									<li>Satellite location: 2,5 m</li>
+									<li>Satellite clock: 1,5 m</li>
+									<li>Atmospheric perturbations: 6 m</li>
+									<li>The most important one: multipath (reflections of satellite signals - urban canyons)</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://galileognss.eu/the-path-to-high-gnss-accuracy/" title="GalileoGNSS" target="_blank">GalileoGNSS</a></div>
+					</section>
+					<section> <h4>Example of Galileo accuracy</h4>
+						<img src="images/galileoAccuracy.png" height="500">
+						<div class="pbverysmall">Source: <a href="https://www.gsc-europa.eu/electronic-library/galileo-service-performance-reports" title="European GSC" target="_blank">European GSC</a></div>
+					</section>
+					<section> <h4>Constellations</h4>
+					</section>
+					<section>
+						<ul>
+							<li>GPS:
+								<ul>
+									<li>USA</li>
+									<li>Started in 1973, operational in 1993</li>
+									<li>30 operational satellites in September 2020</li>
+									<li>Orbits: 20200 km (MEO)</li>
+								</ul>
+							</li>
+							<li>GLONASS:
+								<ul>
+									<li>Russia</li>
+									<li>Started in 1976, operational in 1995</li>
+									<li>24 operational satellites in October 2020</li>
+									<li>Orbits: 19100 km (MEO)</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.gps.gov/systems/gps/space/" title="GPS" target="_blank">GPS</a>,
+							<a href="https://www.glonass-iac.ru/en/index.php" title="GLONASS" target="_blank">GLONASS</a>
+						</div>
+					</section>
+					<section>
+						<ul>
+							<li>Galileo:
+								<ul>
+									<li>Europe</li>
+									<li>Started in 1999, operational in 2016</li>
+									<li>24 operational satellites in October 2020</li>
+									<li>Orbits: 23200 km (MEO)</li>
+								</ul>
+							</li>
+							<li>BeiDou (北斗):
+								<ul>
+									<li>China</li>
+									<li>Started in 2000, operational in 2020</li>
+									<li>30 satellites launched from 2017 to 2020</li>
+									<li>Orbits: MEO, GEO and GSO</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.gsc-europa.eu/system-service-status/constellation-information" title="Galileo" target="_blank">Galileo</a>,
+							<a href="http://en.beidou.gov.cn/" title="BeiDou" target="_blank">BeiDou</a>
+					</section>
+					<section>
+						<ul>
+							<li>NavIC:
+								<ul>
+									<li>India</li>
+									<li>Tegional system</li>
+									<li>8 operational satellites in 2020</li>
+									<li>Orbits: GEO and GSO</li>
+								</ul>
+							</li>
+							<li>QZSS:
+								<ul>
+									<li>Japan</li>
+									<li>Regional system</li>
+									<li>4 operational satellites in September 2020</li>
+									<li>Orbits: QZO</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.isro.gov.in/spacecraft/satellite-navigation" title="NavIC" target="_blank">NavIC</a>,
+							<a href="https://qzss.go.jp/en/index.html" title="QZSS" target="_blank">QZSS</a>
+					</section>
+					<section> <h4>Accuracy: real-world example</h4>
+						<img src="images/gnssAccuracy.png">
+					</section>
+					<section>
+						<p>Conditions:</p>
+						<ul>
+							<li>Smartphone GNSS receiver - GPS + GLONASS</li>
+							<li>In 2017</li>
+							<li>Indoors, street level, 2 m from a window</li>
+							<li>One location every 2 s during 15 min</li>
+							<li>&rArr; Several locations more than 60 m far from real location</li>
+						</ul>
+					</section>
+					<section> <h4>Increasing accuracy</h4>
+						<ul>
+							<li>Broadcasting corrections on regional area</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/sbas.png">
+						<div class="pbverysmall">Source: <a href="https://www.gsa.europa.eu/european-gnss/what-gnss/what-sbas" title="SBAS" target="_blank">SBAS</a></div>
+					</section>
+					<section> <h4>Decreasing acquisition time</h4>
+						<ul>
+							<li>First-location acquisition time: Time To First Fix (TTFF)</li>
+							<li>To decrease it: provide GNSS receiver with almanacs and ephemeris</li>
+							<li>These data must be transmitted to the device</li>
+							<li>Historical name: A-GPS (Assisted GPS)</li>
+						</ul>
+					</section>
+					<section> <h4>Interfacing with a GNSS receiver</h4>
+						<img src="images/positionningInterface.png">
+					</section>
+					<section>
+						<ul>
+							<li>Physical level: serial link (board voltage or V.28)</li>
+							<li>Data level:</li>
+								<ul>
+									<li>NMEA 0183 - not designed for GNSS</li>
+									<li>Very often: optimized proprietary protocols</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/nmea0183.png">
+						<div class="pbverysmall">Source: <a href="https://www.u-blox.com/sites/default/files/products/documents/u-blox6-GPS-GLONASS-QZSS-V14_ReceiverDescrProtSpec_%28GPS.G6-SW-12013%29_Public.pdf" title="u-blox" target="_blank">u-blox</a></div>
+					</section>
+					<section>
+						<p>Proprietary protocols:</p>
+						<ul>
+							<li>SiRF (Qualcomm)</li>
+							<li>u-blox</li>
+							<li>SkyTraq</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Most GNSS receivers are multi-constellations</li>
+							<li>Antenna quality and placement are important</li>
+							<li>It's easy to degrade reception</li>
+						</ul>
+					</section>
+					<section id="positioning-3"> <h3>Positioning with a fixed infrastructure</h3>
+						<ul>
+							<li>Trilateration: several distance measurements resulting from time measurements (similar to GNSS)</li>
+							<li>Triangulation: several angle measurements</li>
+							<li>Receiving antenna location ("cell")</li>
+							<li>Beacons, for proximity detection</li>
+						</ul>
+					</section>
+					<section id="positioning-4"> <h3>Dead reckoning</h3>
+						<ul>
+							<li>Start from a known location</li>
+							<li>Path tracking thanks to sensors: gyroscope, accelerometer, magnetometer...)</li>
+							<li>Sensor data filtering and fusion</li>
+							<li>Periodical resynchronization</li>
+						</ul>
+					</section>
+					<section id="positioning-5"> <h3>Indoors</h3>
+						<ul>
+							<li>Previous technologies may be used indoors, with varying results</li>
+							<li>Installation of dedicated infrastructure is often required, for good results</li>
+						</ul>
+					</section>
+					<section> <h3>Our example</h3>
+						<ul>
+							<li>Power supply should be accessible, in the vehicles</li>
+							<li>&rArr; No energy constraint</li>
+							<li>It seems that inter-vehicle distance calculation may rely on GNSS data</li>
+							<li>Where to place the GNSS antenna? Where to run the antenna cable?</li>
+						</ul>
+					</section>
+					<section id="positioning-6"> <h3>Points to remember</h3>
+						<ul>
+							<li>GNSS, not GPS &#x1F642;</li>
+							<li>Accuracy increases</li>
+							<li>Acquisition time decreases</li>
+							<li>Required energy decreases</li>
+							<li>But it is still challenging today to position everywhere everytime</li>
+							<li>Do not confuse positioning and tracking</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section id="communications"> <h2>Communications</h2>
+					</section>
+					<section id="communications-1"> <h3>Our example</h3>
+					</section>
+					<section>
+						<img src="images/convoy.png"  height="600">
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Transmit an alarm to the operations center</li>
+							<li>Audio monitoring</li>
+							<li>Real-time tracking</li>
+							<li>Global coverage</li>
+							<li>Communications between vehicles</li>
+						</ul>
+					</section>
+					<section> <h3>Foreword</h3>
+						<ul>
+							<li>Parts of the information below relate to Europe only, or to France only</li>
+							<li>But similar elements apply in the rest of the world, with some differences in technology and in regulation</li>
+						</ul>
+					</section>
+					<section id="communications-2"> <h3>Land mobile networks</h3>
+					</section>
+					<section> <h4>Overview</h4>
+						<ul>
+							<li>1G: '80s - analog networks</li>
+							<li>2G: '90s - digital switchover
+								<ul>
+									<li>Services: voice, data, SMS</li>
+									<li>Technologies: GSM/GPRS, EDGE, CDMAOne, PDC, iDEN, IS-136, D-AMPS</li>
+								</ul>
+							</li>
+							<li>3G: '00s
+								<ul>
+									<li>GSM/GPRS evolution, CDMA2000 1X/EVDO, UMTS-HSPA+</li>
+								</ul>
+							</li>
+							<li>4G: '10s
+								<ul>
+									<li>LTE Advanced</li>
+								</ul>
+							</li>
+							<li>5G: '20s</li>
+						</ul>
+						<div class="pbverysmall">Sources: <a href="http://www.itu.int/osg/spu/ni/3G/technology/index.html" title="ITU" target="_blank">ITU</a>,
+							<a href="https://www.3gpp.org/about-3gpp" title="3GPP" target="_blank">3GPP</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>A network is shared among all users</li>
+							<li>(Almost) no priority management</li>
+							<li>Operators aim at providing coverage for population, not for territory</li>
+							<li>Coverage can't be adapted to specific needs</li>
+							<li>Regulated frequency bands</li>
+						</ul>
+					</section>
+					<section> <h4>Data services</h4>
+					</section>
+					<section> <h5>SMS (Short Message Service)</h5>
+						<img src="images/sms-ms-sc.png">
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+						<div class="pbverysmall">Source: <a href="https://www.3gpp.org/dynareport/23040.htm" target="_blank">3GPP</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>140 bytes, or 160 7-bit characters, or 70 UCS2 characters</li>
+							<li>Concatenation is possible</li>
+							<li>No end-to-end acknowledge</li>
+							<li>Latency: may be high (several hours)</li>
+							<li>Benefit: allows to send downlink data (to a terminal)</li>
+						</ul>
+					</section>
+					<section> <h5>Packet data</h5>
+						<ul>
+							<li>Based on Internet potocols (IP, TCP, UDP, etc.)</li>
+							<li>Some limitations may apply, depending on the subscription (protocols, ports)</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>2G:
+								<ul>
+									<li>GPRS (General Packet Radio Service) - 2,5G</li>
+									<li>GPRS services are closed, are being closed, or will be closed</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>3G:
+								<ul>
+									<li>Rural area: 144 kb/s at least - 384 kb/s at most, 500 km/h at most</li>
+									<li>Urban area: 384 kb/s at least - 512 kb/s at most, 120 km/h at most</li>
+									<li>Close to the base station: 2 Mb/s at least, 10 km/h at most</li>
+								</ul>
+							</li>
+							<li>4G:
+								<ul>
+									<li>100 Mb/s downlink, 50 Mb/s uplink</li>
+									<li>optimized for slow speed, but supports high speed, 500 km/h at most</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.etsi.org/technologies/mobile/" title="ETSI" target="_blank">ETSI</a></div>
+						</section>
+					<section>
+						<ul>
+							<li>Historically, data services designed for:
+								<ul>
+									<li>E-mails</li>
+									<li>Web browsing</li>
+									<li>Playing movies</li>
+								</ul>
+							</li>
+							<li>Connected devices have specific needs and constraints:
+								<ul>
+									<li>Infrequent, short messages</li>
+									<li>Often: no external power supply</li>
+									<li>Often: low cost</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>To fulfill these needs: LPWAN (Low Power Wide Area Network)</li>
+								<ul>
+									<li>NB-IoT (Narrowband IoT)</li>
+									<li>LTE-M (Long Term Evolution - Category M1) (LTE = 3G &rarr; 4G)</li>
+								</ul>
+							</li>
+							<li>Other LPWAN technologie: see below</li>
+						</ul>
+					</section>
+					<section> <h5><img src="images/lte_m_rgb-medium.png"> </h5>
+						<ul>
+							<li>PSM (Power Saving Mode): decreased signalling</li>
+							<li>eDRX (Extended Discontinuous Reception): receiver switched off part of the time</li>
+							<li>HLCom (High Latency Communications): buffering and dedicated signalling for PSM and eDRX</li>
+							<li>Half Duplex Mode</li>
+							<li>CE (Coverage Enhancement): repetitions on data and control channels</li>
+							<li>etc.</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.gsma.com/iot/mobile-iot/" title="GSMA" target="_blank">GSMA</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Targets: 
+								<ul>
+									<li>Achieve a 10 year battery life</li>
+									<li>Simpler terminal &rArr; less expensive</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section> <h5>Characteristics</h5>
+						<ul>
+							<li>Speed: 1 Mb/s uplink and downlink</li>
+							<li>Latency: from 10 ms up to 4 s</li>
+							<li>Voice</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.thalesgroup.com/en/markets/digital-identity-and-security/iot/resources/innovation-technology/lte-m" title="Thales" target="_blank">Thales</a>
+					</section>
+					<section> <h5><img src="images/nbiot_black_rgb-medium.png"> </h5>
+						<ul>
+							<li>PSM (Power Saving Mode): decreased signalling</li>
+							<li>eDRX (Extended Discontinuous Reception): receiver switched off part of the time</li>
+							<li>Coverage Extension : increased power levels and repetitions</li>
+							<li>etc.</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.gsma.com/iot/mobile-iot/" title="GSMA" target="_blank">GSMA</a></div>
+						</section>
+					<section>
+						<ul>
+							<li>Targets: 
+								<ul>
+									<li>Achieve a 10 year battery life</li>
+									<li>Simpler terminal &rArr; less expensive</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section> <h5>Characteristics</h5>
+						<ul>
+							<li>Speed: up to 158 kb/s uplink and 124 kb/s downlink</li>
+							<li>Latency: 1,4 up to 10 s</li>
+							<li>Voice not supported</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.thalesgroup.com/en/markets/digital-identity-and-security/iot/resources/innovation-technology/lte-m" title="Thales" target="_blank">Thales</a></div>
+					</section>
+					<section> <h5>Active networks (August 2020)</h5>
+						<ul>
+							<li>LTE-M: 46 networks</li>
+							<li>NB-IoT: 96 networks</li>
+							<li>In France: 
+								<ul>
+									<li>LTE-M: Orange</li>
+									<li>NB-IoT: SFR</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.gsma.com/iot/mobile-iot-commercial-launches/" title="GSMA" target="_blank">GSMA</a></div>
+					</section>
+					<section> <h4>How to integrate a mobile network terminal</h4>
+					</section>
+					<section>
+						<p>Two main possibilities:</p>
+						<ul>
+							<li>Separate terminal controlled by the application</li>
+							<li>The application is in the terminal</li>
+						</ul>
+					</section>
+					<section> <h5>Separate terminal</h5>
+						<img src="images/communicationInterface.png">
+					</section>
+					<section>
+						<ul>
+							<li>Physical layer: serial link (board voltage or V.28)</li>
+							<li>Data layer:
+								<ul>
+									<li>"AT commands"</li>
+									<li>3GPP TS 27.007</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=1515" title="3GPP" target="_blank">3GPP</a></div>
+					</section>
+					<section> <h5>Command format</h5>
+						<img src="images/3gppATCommands.png">
+						<div class="pbverysmall">Source: <a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=1515" title="3GPP" target="_blank">3GPP</a></div>
+					</section>
+					<section> <h5>Response format</h5>
+						<img src="images/3gppATResponses.png">
+						<div class="pbverysmall">Source: <a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=1515" title="3GPP" target="_blank">3GPP</a></div>
+					</section>
+					<section> <h5>Commands</h5>
+						<ul>
+							<li>Around 300 commands:
+								<ul>
+									<li>Voice calls management</li>
+									<li>Network services management</li>
+									<li>Data services management</li>
+									<li>Terminal information</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Every manufacturer adds their own commands:
+								<ul>
+									<li>GPIO</li>
+									<li>File system</li>
+									<li>TCP and UDP sockets</li>
+									<li>FTP, HTTP, ping, CoAP, MQTT, LwM2M</li>
+									<li>GNSS</li>
+									<li>Date and time</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section> <h5>Modes of operation</h5>
+						<img src="images/moduleATModes.png">
+						<div class="pbverysmall">Source: <a href="https://www.u-blox.com/sites/default/files/SARA-R5-Application-Development_AppNote_%28UBX-20009652%29.pdf" title="u-blox" target="_blank">u-blox</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Data: requires the activation of a PDP (Packet Data Protocol) context</li>
+							<li>Selection of the destination network: APN (Access Point Name)
+								<ul>
+									<li>Internet, intranet</li>
+									<li>Allowed protocols and ports</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section> <h5>Using PPP (Point to Point Protocol)</h5>
+						<img src="images/externalPdpContext.png">
+						<div class="pbverysmall">Source: <a href="https://www.u-blox.com/sites/default/files/SARA-R5-Internet-applications-development-guide_AppNote_%28UBX-20032566%29.pdf" title="u-blox" target="_blank">u-blox</a></div>
+					</section>
+					<section> <h5>Using an internal TCP/IP stack</h5>
+						<img src="images/internalPdpContext.png">
+						<div class="pbverysmall">Source: <a href="https://www.u-blox.com/sites/default/files/SARA-R5-Internet-applications-development-guide_AppNote_%28UBX-20032566%29.pdf" title="u-blox" target="_blank">u-blox</a></div>
+					</section>
+					<section> <h5>Application in the terminal</h5>
+						<ul>
+							<li>Often, two processors: mobile network stack and application</li>
+							<li>An API (Application Programming Interface) provides access to services</li>
+							<li>OS (Linux) or RTOS (Thread-X, etc.)</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/moduleArchitecture.png">
+					</section>
+					<section id="communications-3"> <h3>Unlicensed LPWAN</h3>
+					</section>
+					<section>
+						<p class="pbcenter">Some frequencies can be used without a license.</p>
+					</section>
+					<section> <h4>Regulation</h4>
+						<ul class="pbsmaller">
+							<li>International recommendations (ITU, CEPT, etc.)</li>
+							<li>National regulations</li>
+						</ul>
+					</section>
+					<section>
+						<p>&rArr; ISM (Industrial, Scientific and Medical) frequencies</p>
+						<ul>
+							<li>Initially, assigned to non-telecommunication applications</li>
+							<li>Nowadays, used for Wi-Fi, Bluetooth, Zigbee, etc.</li>
+							<li>Services must accept harmful interference</li>
+							<li>6,7 MHz - 13 MHz - 27 MHz - 40 MHz - 433 MHz - 915 MHz - 2,4 GHz - 5,8 GHz - 24 GHz - 61 GHz - 122 GHz - 245 GHz</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.itu.int/net/ITU-R/terrestrial/faq/index.html#g013" title="ITU" target="_blank">ITU</a></div>
+					</section>
+					<section>
+						<p>&rArr; SRD (Short Range Devices)</p>
+						<ul>
+							<li>Must offer a low risk of interference with other radio services</li>
+							<li>In case of interference: no protection from regulations</li>
+							<li>Can use ISM frequencies and some additional ones (868 MHz, etc.)</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.cept.org/" title="CEPT" target="_blank">CEPT</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Limited power: 1 to 500 mW e.r.p. depending on frequency</li>
+							<li>Possible limitation of overall transmission time (duty cycle): 1% to 0,001% depending on frequency</li>
+						</ul>
+					</section>
+					<section> <h4>Two main types of LPWAN networks</h4>
+						<ul>
+							<li>Sigfox networks</li>
+							<li>Networks based on LoRaWAN technology</li>
+						</ul>
+					</section>
+					<section> <h5><img src="images/sigfoxLogo.png"> </h5>
+						<p>Radio:</p>
+							<ul class="pbsmaller">
+								<li>From terminal to network: asynchronous transmission</li>
+								<li>Messages repeated three times, on three frequencies</li>
+								<li>UNB (Ultra Narrow Band)</li>
+								<li>Modulations: DBPSK (Differential Binary Phase Shift Keying) and GFSK (Gaussian Frequency Shift Keying)</li>
+								<li>Proprietary technology</li>
+								<li>Frequencies: 862 to 876 MHz, 902 to 928 MHz, depending on region</li>
+								<li>Bandwidth: 100 Hz</li>
+								<li>Speed: 100 b/s or 600 b/s, depending on region</li>
+							</ul>
+						<div class="pbverysmall">Sources: <a href="https://www.sigfox.com/en" title="Sigfox" target="_blank">Sigfox</a>,
+							<a href="https://support.sigfox.com" title="Sigfox support" target="_blank">Sigfox support</a></div>
+					</section>
+					<section>
+						<p class="pbcenter">Application payload:</p>
+						<ul>
+							<li>Uplink: 12 bytes</li>
+							<li>Downlink: 8 bytes</li>
+							<li>Limited number of messages per day and per terminal</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.sigfox.com/en" title="Sigfox" target="_blank">Sigfox</a></div>
+					</section>
+					<section> <h5>Coverage</h5>
+						<img src="images/sigfoxCoverage.png">
+						<div class="pbverysmall">Source: <a href="https://www.sigfox.com/en" title="Sigfox" target="_blank">Sigfox</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Beware: presence map, not coverage map</li>
+						</ul>
+					</section>
+					<section> <h5><img src="images/lorawanLogo.png" height="100"></h5>
+						<p>Radio: LoRa</p>
+						<ul class="pbsmaller">
+							<li>Spread spectrum based on CSS (Chirp Spread Spectrum)</li>
+							<li>Error correction in physical layer</li>
+							<li>Proprietary technology</li>
+							<li>Bandwidth:
+								<ul>
+									<li>Uplink: 125 kHz or 500 kHz</li>
+									<li>Downlink: 500 kHz</li>
+								</ul>
+							</li>
+							<li>Orthogonal spreading factors</li>
+							<li>Data rate can adapt to conditions
+								<ul>
+									<li>Uplink: 980 b/s to 12500 b/s</li>
+									<li>Downlink: 980 b/s to 21900 b/s</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://lora-developers.semtech.com/library/tech-papers-and-guides/lora-and-lorawan/" title="Semtech" target="_blank">Semtech</a></div>
+					</section>
+					<section> <h5>LoRaWAN</h5>
+						<ul>
+							<li>Communication protocol + system architecture</li>
+							<li>&rArr; Interoperable LoRaWAN networks and terminals</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/lorawanLayers.png">
+						<div class="pbverysmall">Source: <a href="https://lora-alliance.org/" title="LoRa Alliance" target="_blank">LoRa Alliance</a></div>
+					</section>
+					<section>
+						<img src="images/lorawanNetworkArchitecture.png">
+						<div class="pbverysmall">Source: <a href="https://lora-alliance.org/" title="LoRa Alliance" target="_blank">LoRa Alliance</a></div>
+					</section>
+					<section> <h5>Terminal classes</h5>
+						<ul>
+							<li>Class A (All): communication initiated by the terminal - then two successive receive windows</li>
+							<li>Class B (Beacon): class A + periodical, synchronized receive window</li>
+							<li>Class C (Continouous): continous reception, when no transmission</li>
+						</ul>
+					</section>
+					<section> <h5>Application payload:</h5>
+						<ul>
+							<li>51 to 222 octets, depending on data rate</li>
+							<li>Data rate may be adaptative &rArr; variable payload size</li>
+						</ul>
+					</section>
+					<section> <h5>Networks</h5>
+						<img src="images/lorawanCoverage.png">
+						<div class="pbverysmall">Source: <a href="https://lora-alliance.org/" title="LoRa Alliance" target="_blank">LoRa Alliance</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Beware: presence map, not coverage map</li>
+							<li>148 operators, in 162 countries</li>
+							<li>In France:
+								<ul>
+									<li>Objenious (Bouygues Telecom)</li>
+									<li>Orange</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Community networks:
+								<ul>
+									<li><a href="https://www.loriot.io/">LORIOT</a></li>
+									<li><a href="https://www.thethingsnetwork.org/">The Things Network</a></li>
+								</ul>
+							</li>
+							<li>It's possible to set up your own network</li>
+						</ul>
+					</section>
+					<section id="communications-4"> <h3>Satellite networks</h3>
+					</section>
+					<section> <h4>Geosynchronous Equatorial Orbit (GEO)</h4>
+						<ul>
+							<li>36000 km above Earth</li>
+							<li>Satellite appears at a fixed position to ground observers</li>
+							<li>Coverage restricted to area "below" the satellite</li>
+							<li>Minimal end-to-end latency: 2 x 36000 km / 300000 km/s &rArr; 240 ms</li>
+						</ul>
+					</section>
+					<section> <h5><img src="images/inmarsatLogo.png"></h5>
+						<ul>
+							<li>BGAN M2M
+								<ul>
+									<li>IP - up to 448 kb/s</li>
+									<li>Latency: > 800 ms</li>
+									<li>Coverage: almost global</li>
+								</ul>
+							</li>
+							<li>IsatM2M
+								<ul>
+									<li>10-byte or 25-byte uplink messages / 100-byte downlink messages</li>
+									<li>Latency: 30 to 60 s</li>
+									<li>Coverage: almost global</li>
+								</ul>
+							</li>
+							<li>IsatDataPro
+								<ul>
+									<li>6400-byte uplink messages / 10000-byte downlink messages</li>
+									<li>Latency: 15 to 60 s</li>
+									<li>Coverage: almost global</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.inmarsat.com/service-group/m2m/" title="Inmarsat" target="_blank">Inmarsat</a></div>						
+					</section>
+					<section> <h5> <img src="images/thurayaLogo.png"> </h5>
+						<ul>
+							<li>Several data services</li>
+							<li>Coverage: 2/3 of the globe</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.thuraya.com/service/m2m-iot/" title="Thuraya" target="_blank">Thuraya</a></div>						
+					</section>
+					<section> <h4>Low Earth Orbit (LEO)</h4>
+						<ul>
+							<li>Altitude of 2000 km or less</li>
+							<li>(Earth radius: around 6400 km)</li>
+							<li>(ISS: between 330 and 420 km)</li>
+							<li>Period: from 80 to 130 min</li>
+							<li>Latency: often longer (store and forward...)</li>
+							<li>Lower terminal power transmission</li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">Older operators:</p>
+						<ul>
+							<li><a href="https://orbcomm.com/" title="Orbcomm" target="_blank">Orbcomm</a></li>
+							<li><a href="https://www.globalstar.com/en-us/" title="Globalstart" target="_blank">Globalstar</a> </li>
+							<li><a href="https://www.iridium.com/" title="Iridium" target="_blank">Iridium</a> </li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">New operators:</p>
+						<ul>
+							<li><a href="https://www.astrocast.com/" title="Astrocast" target="_blank">Astrocast</a> (80 nanosatellites) </li>
+							<li><a href="https://fleetspace.com/" title="Fleet" target="_blank">Fleet</a> (nanosatellites)</li>
+							<li><a href="https://hiber.global/hiberband/" title="Hiberband" target="_blank">Hiberband</a> (nanosatellites)</li>
+							<li><a href="https://kepler.space/" title="Kepler" target="_blank">Kepler</a> (140 nanosatellites at end 2022) </li>
+							<li><a href="https://lacuna.space/" title="Lacuna" target="_blank">Lacuna</a> (nanosatellites - LoRa)</li>
+							<li><a href="https://myriota.com/" title="Myriota" target="_blank">Myriota</a> (nanosatellites)</li>
+							<li><a href="https://swarm.space/" title="Swarm" target="_blank">Swarm</a> (nanosatellites)</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section id="communications-5"> <h3>PMR (Professional/Private Mobile Radio) networks</h3>
+						<h4>Information for France</h4>
+					</section>
+					<section>
+						<p class="pbcenter">PMR networks:</p>
+						<ul>
+							<li>Independent networks</li>
+							<li>For professionals, State services, hospitals, local authorities, etc.</li>
+							<li>Voice is the primary service</li>
+							<li>Local or regional coverage</li>
+							<li>Licensed frequencies:
+								<ul>
+									<li>29-54 MHz</li>
+									<li>54-68 MHz</li>
+									<li>68-87 MHz</li>
+									<li>146-174 MHz</li>
+									<li>174-230 MHz</li>
+									<li>406-430 MHz</li>
+									<li>440-470 MHz</li>
+								</ul>
+							</li>
+							<li>Frequency management: Agence Nationale des Fréquences (ANFR)</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.anfr.fr/licences-et-autorisations/reseaux-professionnels/les-reseaux-mobiles-professionnels-pmr/definition-et-contexte/" title="ANFR" target="_blank">ANFR</a></div>
+					</section>
+					<section>
+						<p class="pbcenter">Technologies</p>
+						<ul>
+							<li>There are still some analog networks (voice - data is possible)</li>
+							<li>Digital standards:
+								<ul>
+									<li><img class="pbfloor" src="images/dmrLogo.png" height="30px">(Digital Mobile Radio) :
+										<ul>
+											<li>TDMA (Time Division Multiple Access) on 12,5 kHz or 6,25 kHz</li>
+											<li>Up to 9600 b/s (raw throughput)</li>
+											<li>Short messages and UDP/IP</li>
+										</ul>
+									</li>
+									<li><img class="pbfloor" src="images/dpmrLogo.png" height="30px">(Digital Private Mobile Radio) :
+										<ul>
+											<li>FDMA (Frequency Division Multiple Access) on 6,25 kHz</li>
+											<li>Up to 4800 b/s (raw throughput))</li>
+											<li>Short messages</li>
+										</ul>
+									</li>
+									<li>Allow to:
+										<ul>
+											<li>Communicate from terminal to terminal (directly)</li>
+											<li>Trunking: network shared between several groups of users</li>
+										</ul> 
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Sources: 
+							<a href="https://www.etsi.org/technologies/mobile-radio" title="ETSI" target="_blank">ETSI</a>,
+							<a href="https://www.dmrassociation.org/" title="DMR Association" target="_blank">DMR Association</a>,
+							<a href="https://dpmrassociation.org/index.html" title="dPMR Association" target="_blank">dPMR Association</a>
+						</div>
+					</section>
+					<section>
+						<p class="pbcenter">FDMA - TDMA</p>
+						<img src="images/tdmaFdma.png">
+						<div class="pbverysmall">Source: <a href="https://dpmrassociation.org/dPMR-a-brief-overview.html" title="dPMR Association" target="_blank">dPMR Association</a></div>
+					</section>
+					<section>
+						<p class="pbcenter">Other digital standards:</p>
+						<ul>
+							<li><img class="pbfloor" src="images/tetraLogo.png" height="50px">(TErrestrial Trunked RAdio) :
+								<ul>
+									<li>For shared networks</li>
+									<li>SDS (Short Data Service) - messages of up to 256 bytes</li>
+									<li>Status messages</li>
+									<li>Circuit-switched data</li>
+									<li>Packet-switched data (IP) - up to 14 Kb/s</li>
+									<li>TEDS (TETRA Enhanced Data Service): allows video streams</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://tcca.info/tetra/home/" title="TCCA" target="_blank">TCCA</a></div>
+					</section>
+					<section>
+						<p class="pbcenter">Other digital standards:</p>
+						<ul>
+							<li><img class="pbfloor" src="images/tetrapolLogo.png" height="70px">
+								<ul>
+									<li>For shared networks</li>
+									<li>SMS (Short Message Service)</li>
+									<li>Status messages</li>
+									<li>Packet-switched data (IP)</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="hhttps://www.tetrapol.com" title="TETRAPOL" target="_blank">TETRAPOL</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Networks not well known to the wider public, but are many:
+								<ul>
+									<li>in 2018, 25000 PMR networks in France</li>
+								</ul>
+							</li>
+							<li>fit well applications requiring local or regional coverage</li>
+							<li>benefits:
+								<ul>
+									<li>Coverage can be adapted to suit application requirements</li>
+									<li>Exclusive use of the frequencies (when no trunking)</li>
+									<li>Legal protection against interferences</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.anfr.fr/licences-et-autorisations/reseaux-professionnels/les-reseaux-mobiles-professionnels-pmr/definition-et-contexte/" title="ANFR" target="_blank">ANFR</a></div>
+					</section>
+					<section id="communications-6"> <h3>Short distance radiocommunications</h3>
+					</section>
+					<section> <h4> <img src="images/wifiLogo.png"> </h4>
+						<ul>
+							<li>Based on IEEE 802.11 standard</li>
+							<li>Wireless Local Area Network (WLAN)</li>
+							<li>ISM frequencies: 2,4 GHz and 5,8 GHz</li>
+							<li>802.11g: up to 54 Mb/s - later standards allow more</li>
+							<li>Range: around 100 m</li>
+							<li>Recently: Wi-Fi HaLow (802.11ah) for the IoT:
+								<ul>
+									<li>ISM frequency: 915 MHz</li>
+									<li>Range: around 1 km</li>
+									<li>Good building penetration (narrow band)</li>
+									<li>Low energy consumption</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.wi-fi.org/" title="Wi-Fi Alliance" target="_blank">Wi-Fi Alliance</a></div>
+					</section>
+					<section> <h4> <img src="images/bluetoothLogo.png" height="60px"> </h4>
+						<ul>
+							<li>ISM frequency: 2,4 GHz</li>
+							<li>Two radio modes:
+								<ul>
+									<li>LE (Low Energy) - up to 2 Mb/s - point to point, broadcast, mesh</li>
+									<li>Classic - up to 3 Mb/s - point to point</li>
+									<li>Range : <em>More than a kilometer. Less than a meter.</em> - Observe local regulations!</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.bluetooth.com/" title="Bluetooth SIG" target="_blank">Bluetooth SIG</a></div>
+					</section>
+					<section> <h4> <img src="images/zigbeeLogo.png"> </h4>
+						<ul>
+							<li>ISM frequency: 2,4 GHz</li>
+							<li>Self-organizing mesh network</li>
+							<li>Device types: Coordinator, Router, End Device</li>
+							<li>Data rate: 250 kb/s</li>
+							<li>Range: 300 m line of sight, 75 to 100 m indoors</li>
+							<li>Low energy consumption</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://zigbeealliance.org/" title="Zigbee Alliance" target="_blank">Zigbee Alliance</a></div>
+					</section>
+					<section> <h4> <img src="images/zwaveLogo.png"> </h4>
+						<ul>
+							<li>SRD/ISM frquencies: 868 MHz in Europe, 915 MHz in the USA</li>
+							<li>Mesh network</li>
+							<li>Data rate: up to 100 kb/s</li>
+							<li>Range: 100 m line of sight</li>
+							<li>Low energy consumption</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.z-wave.com/" title="Z-Wave" target="_blank">Z-Wave</a></div>
+					</section>
+					<section> <h4>Proprietary protocols</h4>
+						<ul>
+							<li>You can design your own protocol, or use an existing proprietary protocol</li>
+							<li>You have to comply with local regulation</li>
+						</ul>
+					</section>
+					<section> <h3>Our example</h3>
+						<ul>
+							<li>Global coverage &rArr; satellite networks</li>
+							<li>Small latency, for alarm transmission &rArr; GEO constellation</li>
+							<li>To decrease latency even more: use land mobile networks when available</li>
+							<li>Exchanging locations between vehicles to calculate distance:
+								<ul>
+									<li>Short distance communications</li>
+									<li>Two frequencies at least, to prevent interference attacks</li>
+									<li>Proprietary protocol, to increase security</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section> <h3>Points to remember</h3>
+						<ul>
+							<li>Differentiate standard / radio technology / regulation / operator:
+								<ul>
+									<li>A technology may be used on different frequency bands (e.g. private 4G networks)</li>
+									<li>A standard may describe services that won't be provided by an operator</li>
+									<li>A technology may be provided by several different operators (4G, LoRaWAN, etc.)</li>
+								</ul>
+							</li>
+							<li>Could ISM/SRD frequencies be saturated in some future?</li>
+							<li>It is possible to install and run your own network (PMR, LoRaWAN)</li>
+							<li>It may be required to integrate several different technologies</li>
+							<li><b>Beware:</b> with radio, data loss is <b>certain</b> </li>
+						</ul>
+					</section>
+					<section id="communications-7"> <h3>Data interchange</h3>
+					</section>
+					<section> <h4>Stream or message?</h4>
+						<ul>
+							<li>Sensors: a few (tens of) bytes
+								<ul>
+									<li>Measured data</li>
+									<li>Identifier</li>
+									<li>Date and time</li>
+									<li>Location</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+							<li>Actuators: a few (tens of) bytes
+								<ul>
+									<li>Command to be executed</li>
+									<li>Identifier</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+							<li>&rArr; Messages</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Voice: stream</li>
+							<li>Video: stream</li>
+							<li>Images: (large) messages</li>
+						</ul>
+					</section>
+					<section>
+						<p class="pbcenter">
+							We will look at messages.
+							Voix and video transmission is rare, but sometimes required
+							(as in our example).
+						</p>
+					</section>
+					<section> <h4>Why messages?</h4>
+						<ul>
+							<li>The receiving application has to know when it has received all data
+								related to one measure, from a sensor.
+							</li>
+							<li>
+								An actuator has to know when all the information related to the command
+								it has to execute has been received.
+							</li>
+					</section>
+					<section> <h4>What is a message?</h4>
+						<ul>
+							<li>A sequence of bytes containing all the information required for a given processing.</li>
+						</ul>
+					</section>
+					<section> <h4>Technologies with message-type interface</h4>
+						<ul>
+							<li>UDP/IP</li>
+							<li>SMS</li>
+							<li>LoRaWAN, Sigfox</li>
+							<li>Messages over satellite networks</li>
+							<li>Messages over PMR networks</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section> <h4>Message-type interface</h4>
+						<img src="images/messageInterface.png">
+					</section>
+					<section> <h4>Stream-type interface</h4>
+						<img src="images/streamInterface.png">
+					</section>
+					<section> <h4>Beware!</h4>
+						<p class="pbcenter">TCP/IP is a stream-oriented protocol!</p>
+					</section>
+					<section> <h4>Back to the serial link</h4>
+						<ul>
+							<li>How are built the messages of a GNSS receiver?</li>
+							<li>How are built the AT commands and responses?</li>
+							<li>&rArr; use of delimiters (start, end)</li>
+						</ul>
+					</section>
+					<section> <h4>General solutions for a simple case</h4>
+						<ul>
+							<li>Assumed: 
+								<ul>
+									<li>No error (loss, modification)</li>
+									<li>Data exchange does not modify data order</li>
+									<li>(For instance: TCP/IP)</li>
+								</ul>
+							</li>
+							<li>Solution 1: time
+								<ul>
+									<li>Wait for a minimum time between two successive messages</li>
+									<li>Maximum time between two successive bytes must be smaller than
+										inter-message time
+									</li>
+									<li>Inter-message time must be greater than jitter</li>
+								</ul>
+							</li>
+							<li>Solution 2: delimitation
+								<ul>
+									<li>Specific start sequence</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section> <h4>Transparency</h4>
+						<ul>
+							<li>Let's assume that we use solution 2, with byte of value 01 as
+								a start delimiter.
+							</li>
+							<img src="images/framing1.png">
+							<li>Question: how to send value 01 in a message?</li>
+							<li>This is the transparency problem.</li>
+						</ul>
+					</section>
+					<section> <h4>Endianness</h4>
+						<p>The 32-bit integer 11223344 can be stored in memory in two ways:</p>
+						<img src="images/endianness1.png">
+					</section>
+					<section>
+						<p>Big-endian: 68000 microcontroller, AVR32 microcontroller, etc.</p>
+						<p>Little-endian: x86 microprocessor, etc.</p>
+						<p>Bi-endian: Arm cores, etc.</p>
+					</section>
+					<section>
+						<p>Problem: how can a big-endian microcontroller board exchange 32-bit integers 
+							with a little-endian computer?</p>
+					</section>
+					<section> <h4>Serialization</h4>
+						<p>How to echange data structures between computers?</p>
+						<pre><code data-trim data-noescape>
+								struct sensor {
+									uint32_t sensor_id;
+									char sensor_name[20];
+									struct {
+										double latitude;
+										double longitude;
+									} location;
+								};
+						</code></pre>
+					</section>
+					<section>
+						<p>To answer these problems (delimitation, transparency, endianness, serialization):</p>
+						<ul>
+							<li>More or less complex to define your own solution</li>
+							<li>If you are not experienced, choose an existing solution!</li>
+						</ul>
+					</section>
+					<section> <h4>Serialization and endianness</h4>
+						<ul>
+							<li>ASN.1 (Abstract Syntax Notation number 1):
+								<ul>
+									<li>Maintained by the ITU (International Telecommunication Union)</li>
+									<li>Notation allowing to define data structures independently from their
+										encoding
+									</li>
+									<li>Associated standard encoding rules (BER, PER, etc.)</li>
+									<li>Code generators for many programming languages</li>
+									<li>Self-delimiting</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.itu.int/en/ITU-T/asn1/Pages/introduction.aspx" title="ITU" target="_blank">ITU</a></div>
+					</section>
+					<section> <h4>Serialization and endianness</h4>
+						<ul>
+							<li>Protocol Buffers:
+								<ul>
+									<li>Developed by Google (who did not know ASN.1?)</li>
+									<li>Code generators for many programming languages</li>
+									<li>Requires additional delimitation</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://developers.google.com/protocol-buffers/" title="Google" target="_blank">Google</a></div>
+					</section>
+					<section> <h4>Serialization and endianness</h4>
+						<ul>
+							<li>CBOR (Concise Binary Object Representation) :
+								<ul>
+									<li>Defined by the IETF (Internet Engineering Task Force) - <a href="https://tools.ietf.org/html/rfc7049" target="_blank">RFC 7049</a></li>
+									<li>Based on JSON</li>
+									<li>Self-delimiting</li>
+									<li>Libraries available for many programming languages</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://cbor.io/" title="CBOR" target="_blank">CBOR</a></div>
+					</section>
+					<section> <h4>Serialization and endianness</h4>
+						<p class="pbcenter">For specific needs: relatively easy to define your own formatting.</p>
+					</section>
+					<section> <h4>Communication (+ delimitation and transparency)</h4>
+						<ul>
+							<li>MQTT:
+								<ul>
+									<li>Message Queuing Telemetry Transport</li>
+									<li>But does not use message queueing, and is not restricted to telemetry</li>
+									<li>Requires a specific transport layer: ordered and lossless (TCP)</li>
+									<li>Mixes messaging protocol and publish/subscribe service</li>
+									<li>A non-TCP version exists (for Zigbee, etc.)</li>
+									<li><a href="https://www.oasis-open.org/" target="_blank">OASIS Open</a> standard</li>
+									<li>Several <a href="https://mqtt.org/software/" target="_blank">open source implementations</a></li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://mqtt.org/" title="MQTT" target="_blank">MQTT</a></div>
+					</section>
+					<section> <h4>Communication (+ delimitation and transparency)</h4>
+						<ul>
+							<li>CoAP:
+								<ul>
+									<li>Constrained Application Protocol</li>
+									<li>Model similar to HTTP: requests on resources</li>
+									<li>Designed for UDP</li>
+									<li>IETF standard: <a href="https://www.rfc-editor.org/rfc/rfc7252.html" target="_blank">RFC7252</a></li>
+									<li>Several <a href="https://coap.technology/impls.html" target="_blank">open source implementations</a></li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://coap.technology/" title="CoAP" target="_blank">CoAP</a></div>
+					</section>
+					<section> <h4>Communication (+ delimitation and transparency)</h4>
+						<ul>
+							<li>Many systems use their own (proprietary) protocols</li>
+							<li>Lot of buzz about MQTT and CoAP, but difficult to determine real market shares</li>
+							<li>On TCP, not too complex to define your own protocol, simpler than MQTT</li>
+							<li>On UDP (more generally: lossy message transport), more complex</li>
+						</ul>
+					</section>
+					<section id="communications-8"> <h3>Integration in the Internet</h3>
+						<ul>
+							<li>Sigfox, LoRaWAN, etc: short messages</li>
+							<li>Internet protocol headers (TCP/UDP/IP) are too long</li>
+							<li>&rArr; Devices using these networks are not integrated in the Internet</li>
+						</ul>
+					</section>
+					<section> <h4>A solution: SCHC</h4>
+						<p class="pbcenter">Static Context Header Compression - <a href="https://tools.ietf.org/html/rfc8724" target="_blank">RFC 8724</a></p>
+						<ul>
+							<li>On LPWAN networks, stream nature is predictable</li>
+							<li>&rArr; Context can be stored in the device and in the network</li>
+							<li>&rArr; High level of header compression is possible</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/schc1.png">
+						<div class="pbverysmall">Source: <a href="https://www.ackl.io/" title="Acklio" target="_blank">Acklio</a></div>
+					</section>
+					<section> <h3>Our example</h3>
+						<ul>
+							<li>For messages on satellite network: design a proprietary protocol</li>
+							<li>For land mobile network, on TCP: design a proprietary protocol</li>
+							<li>For inter-vehicles communication: design a proprietary protocol</li>
+							<li>Real complexity lies in integration: handling several networks</li>
+							<li>IP integration with SCHC</li>
+						</ul>
+					</section>
+					<section id="communications-9"> <h3>Points to remember</h3>
+						<ul>
+							<li>The protocol depends on transport layer (with or without loss)</li>
+							<li>On a byte-stream transport layer (TCP), message delimitation is required</li>
+							<li>Decide on a protocol according to your experience, user needs and context</li>
+							<li>Often a strong constraint: code size on embedded side</li>
+							<li>With SCHC, IP may be used almost everywhere &rArr; real Internet of Things</li>
+						</ul>
+					</section>
+				</section>
+				<section> 
+					<section id="architecture"> <h2>Architecture</h2>
+					</section>
+					<section id="architecture-1"> <h3>Distributed processing</h3>
+						<figure>
+							<img src="images/distributedArchitecture1.png">
+							<figcaption>Architecture for mobile network and platform (see below)</figcaption>
+						</figure>
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section>
+						<figure>
+							<img src="images/distributedArchitecture2.png">
+							<figcaption>Architecture for unlicensed LPWAN and platform (see below)</figcaption>
+						</figure>
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section>
+						<ul>
+							<li>Functions in device communicate with remote functions (distributed application)</li>
+							<li>Several types of networks, with different characteristics</li>
+							<li>Many possible use cases</li>
+							<li>&rArr; Layered architecture</li>
+						</ul>
+					</section>
+					<section id="architecture-2"> <h3>Layered architecture</h3>
+						<img src="images/architecture1.png">
+					</section>
+					<section>
+						<ul>
+							<li>Ideal vision!</li>
+							<li>Pros:
+								<ul>
+									<li>Separation of concerns</li>
+									<li>Easier migration from one type of network to another one</li>
+									<li>Reusing technical components is possible</li>
+									<li>Easier maintenance</li>
+									<li>etc.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section id="architecture-3"> <h3>Platforms</h3>
+						<p class="pbcenter">Generic group of layers allowing for:</p>
+						<ul>
+							<li>Abstraction of the communication layer</li>
+							<li>Supply of a part of management services (users and devices)</li>
+							<li>Supply of a part of the security</li>
+							<li>Supply of some complex technical components (data analysis, machine learning, etc.)</li>
+							<li>Scalability</li>
+							<li>Hosting of the above services</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/architecture2.png">
+					</section>
+					<section>
+						<p class="pbcenter">Strangely enough, many platforms are available...</p>
+					</section>
+					<section>
+						<img src="images/platforms1.png">
+						<div class="pbverysmall">Source: <a href="https://systev.com/a-list-of-iot-platforms/" title="Systev" target="_blank">Systev</a></div>
+					</section>
+					<section>
+						<p class="pbcenter">Pros:</p>
+						<ul>
+							<li>Allows to rapidly set up a full system</li>
+							<li>Scalability (> 1000 devices?)</li>
+							<li>May prevent from having to develop some complex technical components</li>
+						</ul>
+						<p class="pbcenter">Cons:</p>
+						<ul>
+							<li>May increase system development complexity</li>
+							<li>May introduce uncontrolled reliability problems </li>
+							<li>Genericity &rArr; may hinder development of bespoke systems</li>
+							<li>Sharing &rArr; may lead to unwanted evolutions</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section id="security"> <h2>Security</h2>
+					</section>
+					<section id="security-1"> <h3>Goals</h3>
+						<ul>
+							<li>Confidentiality</li>
+							<li>Integrity</li>
+							<li>Availability</li>
+						</ul>
+					</section>
+					<section id="security-2"> <h3>Attack surface</h3>
+						<p>Set of points that an attacker can use to attack a system.</p>
+					</section>
+					<section>
+						<img src="images/distributedArchitecture2.png">
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section>
+						<img src="images/attackSurface.png">
+						<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+					</section>
+					<section id="security-3"> <h3>How to deal with attacks</h3>
+						<dl>
+							<dt>Management governance:</dt>
+								<dd>Name an executive in charge of security</dd>
+							<dt>Engineered for security:</dt>
+								<dd>Design hardware and software with attention to security threats</dd>
+							<dt>Fit for purpose cryptography:</dt>
+								<dd>Adhere to best practice industry standards</dd>
+						</dl>
+						<div class="pbverysmall">Source: <a href="https://www.iotsecurityfoundation.org/" title="IoTSF" target="_blank">IoTSF</a></div>
+					</section>
+					<section>
+						<dl>
+							<dt>Secure network and applications:</dt>
+								<dd>Secure applications, web interfaces and server software</dd>
+							<dt>Secure production processes and supply chain:</dt>
+								<dd>Making sure the security of the product is not compromised in the manufacturing process or in
+								the end customer delivery and installation</dd>
+							<dt>Customer security:</dt>
+								<dd>Inform the customer about vulnerabilities, provide software updates, etc.</dd>
+						</dl>
+						<div class="pbverysmall">Source: <a href="https://www.iotsecurityfoundation.org/" title="IoTSF" target="_blank">IoTSF</a></div>
+					</section>
+					<section id="security-4"> <h3>Points to remember</h3>
+						<ul>
+							<li>Needs for security depends on the system</li>
+							<li>Anyway, do not underestimate - for instance: temperature in a house may indicate the absence of the occupants </li>
+							<li>Requires a broad view</li>
+							<li>Requires experience</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section id="project"> <h2>Project management</h2>
+					</section>
+					<section id="project-1"> <h3>Usual industrial project</h3>
+						<img src="images/projectPhases1.png">
+					</section>
+					<section id="project-2"> <h3>Connected objects project</h3>
+						<img src="images/projectPhases2.png">
+						<ul>
+							<li>Be sure to understand real needs of users</li>
+							<li>Ensure to be prepared to integrate required technologies</li>
+							<li>Make dedicated tools (hardware and software) for development and tests</li>
+						</ul>
+					</section>
+					<section id="project-3"> <h3>Problems</h3>
+						<ul>
+							<li>A connected objects system may transform existing business processes</li>
+							<li>It could be that the customer is not able to fully understand the impact</li>
+							<li>The project team may be not experienced enough with some technologies</li>
+							<li>Some technologies to integrate may be not mature enough</li>
+							<li>Some technologies to integrate may age rapidly</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+					<section id="project-4"> <h3>Possible solution: be agile</h3>
+						<p class="pbcenter">Value:</p>
+						<ul>
+							<li>Individuals and interactions over processes and tools</li>
+							<li>Working software over comprehensive documentation</li>
+							<li>Customer collaboration over contract negotiation</li>
+							<li>Responding to change over following a plan</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://agilemanifesto.org/" title="Agile Manifesto" target="_blank">Agile Manifesto</a></div>
+					</section>
+					<section>
+						<p>This manifesto, created for software development, can provide very good results for other types of projects.</p>
+						<p>Stay agile when applying the Agile Manifesto! &#x1F642;</p>
+					</section>
+					<section>
+						<img src="images/agile.png">
+					</section>
+					<section>
+						<ul>
+							<li>Can be used even when answering a Request for Proposal</li>
+							<li>Good for the customer and for the integrator</li>
+							<li>To be agile is far more important than sticking to a predefined plan</li>
+						</ul>
+					</section>
+					<section id="project-5"> <h3>For a connected objects project</h3>
+						<ul>
+							<li>Make prototypes and present them to the users (not only to the customer)</li>
+							<li>Test in the field as soon as possible</li>
+							<li>If possible, implement Over The Air (OTA) updates</li>
+							<li>Use equipment that can be upgraded</li>
+							<li>Use equipment with more processing power than strictly required</li>
+							<li>etc.</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section id="conclusion"> <h2>Conclusion</h2>
+					</section>
+					<section>
+						<ul>
+							<li>Developing a connected objects system can be challenging: 
+								<ul>
+									<li>Wide variety of user needs &rArr; can be difficult to find references</li>
+									<li>It can be difficult to get the real user needs</li>
+									<li>Several different technological fields have to be mastered</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>Compared to other types of projects:
+								<ul>
+									<li>Spend time with the users (and not only with the customer)</li>
+									<li>Prepare for getting experienced in required technologies before the project starts</li>
+									<li>Ensure you have the big picture in mind</li>
+									<li>Be agile</li>
+									<li>Look for T-shaped team members</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="pbverysmall">Source: <a href="https://www.ptc.com/en/blogs/corporate/why-engineers-need-to-develop-t-shaped-skills" title="Profil en T" target="_blank">T-shaped skills</a></div>
+					</section>
+					<section>
+						<p class="pbcenter">But this is a wonderful domain! &#x1F642;</p>
+					</section>
+				</section>
+				<section>
+					<p class="pbcenter">Thanks!</p>
+				</section>
+			</div>
+		</div>
+	
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script>
+		  Reveal.initialize({
+			hash: true,
+			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+			slideNumber: true
+		  });
+		</script>
+		
+	</body>
+</html>
