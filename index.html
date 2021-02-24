@@ -51,6 +51,10 @@
 						</thead>
 						<tbody>
 							<tr>
+								<td>24-Feb-2021</td>
+								<td>Added links to STM32 and ESP32 hands-on labs</td>
+							</tr>
+							<tr>
 								<td>21-Feb-2021</td>
 								<td>Added link to a BLE hands-on lab</td>
 							</tr>
@@ -165,7 +169,17 @@
 					</section>
 					<section> <h3>Hands-on labs</h3>
 						<ul>
-							<li><a href="#/hoBluetoothRuuvi">Receiving and decoding advertisement data transmitted by a Ruuvi tag</a></li>
+							<li>Connected device:
+								<ul>
+									<li><a href="#/hoSTM32SampleApplication">A bare-metal application for the NUCLEO-L476RG dev board</a></li>
+									<li><a href="#/hoESP32SampleApplication">An application for the ESP32-DevKitC dev board</a></li>
+								</ul>
+							</li>
+							<li>Communications:
+								<ul>
+									<li><a href="#/hoBluetoothRuuvi">Receiving and decoding advertisement data transmitted by a Ruuvi tag</a></li>
+								</ul>
+							</li>
 						</ul>
 					</section>
 				</section>
@@ -1121,6 +1135,26 @@
 							<li>Entering a sleep mode is important for devices without external power supply</li>
 							<li>Usually, several different sleep modes</li>
 							<li>The part(s) generating events must be kept active</li>
+						</ul>
+					</section>
+					<section id="hoSTM32SampleApplication"> <h4>STM32 hands-on lab</h4>
+						<img src="images/nucleoL476RG.png">
+						<ul>
+							<li><a href="https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html" target="_blank">STM32</a>: 
+								family of 32-bit microcontrollers based on the Arm Cortex-M processor</li>
+							<li>various development boards are available</li>
+							<li>RTOS (FreeRTOS, Arm Mbed) or bare metal</li>
+							<li><a href="https://github.com/PascalBod/lm20.1-stm32cubeide" target="_blank">
+								write a bare-metal application for the NUCLEO-L476RG dev board</a></li>
+						</ul>
+					</section>
+					<section id="hoESP32SampleApplication"> <h4>ESP32 hands-on lab</h4>
+						<img src="images/ESP32-DevKitC.png">
+						<ul>
+							<li><a href="https://www.espressif.com/en/products/socs/esp32" target="_blank">ESP32</a>: a Wi-Fi + Bluetooth microcontroller</li>
+							<li>various development boards are available</li>
+							<li>RTOS (FreeRTOS) and/or dedicated libraries</li>
+							<li><a href="https://github.com/PascalBod/lm20.1-esp32-eclipse" target="_blank">write a sample application for the ESP32-DevKitC dev board</a></li>
 						</ul>
 					</section>
 					<section> <h3>Our example</h3>
