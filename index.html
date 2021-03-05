@@ -52,7 +52,7 @@
 						<tbody>
 							<tr>
 								<td>05-Mar-2021</td>
-								<td>Added how to navigate</td>
+								<td>Added how to navigate, UDP lab</td>
 							</tr>
 							<tr>
 								<td>24-Feb-2021</td>
@@ -189,6 +189,7 @@
 							<li>Communications:
 								<ul>
 									<li><a href="#/hoBluetoothRuuvi">Receiving and decoding advertisement data transmitted by a Ruuvi tag</a></li>
+									<li><a href="#/hoUdpOverWifi">UDP over Wi-Fi</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -1148,7 +1149,7 @@
 							<li>The part(s) generating events must be kept active</li>
 						</ul>
 					</section>
-					<section id="hoSTM32SampleApplication"> <h4>STM32 hands-on lab</h4>
+					<section id="hoSTM32SampleApplication"> <h4>Hands-on Lab: STM32</h4>
 						<img src="images/nucleoL476RG.png">
 						<ul>
 							<li><a href="https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html" target="_blank">STM32</a>: 
@@ -1159,7 +1160,7 @@
 								write a bare-metal application for the NUCLEO-L476RG dev board</a></li>
 						</ul>
 					</section>
-					<section id="hoESP32SampleApplication"> <h4>ESP32 hands-on lab</h4>
+					<section id="hoESP32SampleApplication"> <h4>Hands-on Lab: ESP32</h4>
 						<img src="images/ESP32-DevKitC.png">
 						<ul>
 							<li><a href="https://www.espressif.com/en/products/socs/esp32" target="_blank">ESP32</a>: a Wi-Fi + Bluetooth microcontroller</li>
@@ -2121,7 +2122,7 @@
 						</ul>
 						<div class="pbverysmall">Source: <a href="https://www.bluetooth.com/" title="Bluetooth SIG" target="_blank">Bluetooth SIG</a></div>
 					</section>
-					<section id="hoBluetoothRuuvi"> <h4>Bluetooth hands-on lab</h4>
+					<section id="hoBluetoothRuuvi"> <h4>Hands-on Lab: Bluetooth advertisement data</h4>
 						<p><a href="https://github.com/PascalBod/ESPIDFRuuviTag" target="_blank">Receiving and decoding advertisement data transmitted by a Ruuvi tag</a></p>
 						<p>Parts:</p>
 						<img src="images/ruuvitag-medium.png" height="100">
@@ -2430,6 +2431,21 @@
 							<li>Lot of buzz about MQTT and CoAP, but difficult to determine real market shares</li>
 							<li>On TCP, not too complex to define your own protocol, simpler than MQTT</li>
 							<li>On UDP (more generally: lossy message transport), more complex</li>
+						</ul>
+					</section>
+					<section id="hoUdpOverWifi"> <h4>Hands-on Lab: UDP over Wi-Fi</h4>
+						<p>Parts:</p>
+						<ul>
+							<li>An <a href="https://www.espressif.com/en/products/devkits/esp32-devkitc/overview" target="_blank">ESP32-DevKitC</a></li>
+							<li>A Wi-Fi Access Point</li>
+							<li>A computer running Linux or macOS, reachable from the Wi-Fi Access Point</li>
+						</ul>
+						<p>Lab:</p>
+						<ul>
+							<li><a href="https://github.com/PascalBod/ESPIDFUdpSender" target="_blank">
+								An application running on the ESP32-DevKitC initiates a connection to the Access Point</a></li>
+							<li>A very simple UDP server is started on the computer</li>
+							<li>The application sends messages to the server using UDP datagrams</li>
 						</ul>
 					</section>
 					<section id="communications-8"> <h3>Integration in the Internet</h3>
