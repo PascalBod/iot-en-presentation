@@ -56,6 +56,10 @@
 					</thead>
 					<tbody>
 						<tr>
+							<td>11-Dec-2021</td>
+							<td>Standardization section</td>
+						</tr>
+						<tr>
 							<td>13-Nov-2021</td>
 							<td>More about software - Case studies</td>
 						</tr>
@@ -133,7 +137,6 @@
 						<li><a href="#/example-1">Expressed requirements</a></li>
 						<li><a href="#/example-2">Looking at requirements</a></li>
 						<li><a href="#/example-3">Technical fields</a></li>
-						<li><a href="#/example-4">Project management</a></li>
 					</ul>
 				</section>
 				<section>
@@ -191,6 +194,16 @@
 						<li><a href="#/security-2">Attack surface</a></li>
 						<li><a href="#/security-3">How to deal with attacks</a></li>
 						<li><a href="#/security-4">Points to remember</a></li>
+					</ul>
+				</section>
+				<section>
+					<h3><a href="#/standardization">Standardization</a></h3>
+					<ul>
+						<li><a href="#/standardization-1">OneM2M</a></li>
+						<li><a href="#/standardization-2">ITU-T Study Group 20</a></li>
+						<li><a href="#/standardization-3">IETF Internet of Things Directorate</a></li>
+						<li><a href="#/standardization-4">W3C Web of Things</a></li>
+						<li><a href="#/standardization-5">Other organizations</a></li>
 					</ul>
 				</section>
 				<section>
@@ -463,20 +476,18 @@
 				<section>
 					<img src="images/domains.png">
 				</section>
-				<section id="example-4">
-					<h3>Project management</h3>
-					<ul>
-						<li>Many use cases</li>
-						<li>Often difficult to get the real needs</li>
-						<li>Several technical fields</li>
-					</ul>
+				<section>
+					<img src="images/domains-2.png">
+				</section>
+				<section>
+					<p>Undertanding real user needs can be a challenge. But it is key to success.</p>
 				</section>
 				<section>
 					<p class="pbcenter">We will see in detail all these elements...</p>
 				</section>
 			</section>
 			<section>
-				<a href="connectedDevice.html" target="_blank">Connected Device</a>
+				<h2><a href="connectedDevice.html" target="_blank">Connected Device</a></h2>
 			</section>
 			<section>
 				<section id="positioning">
@@ -894,7 +905,7 @@
 							<li>LTE-M (Long Term Evolution - Category M1) (LTE = 3G &rarr; 4G)</li>
 						</ul>
 						</li>
-						<li>Other LPWAN technologie: see below</li>
+						<li>Other LPWAN technologie: see further below</li>
 					</ul>
 				</section>
 				<section>
@@ -1966,7 +1977,7 @@
 					<h3>Distributed processing</h3>
 					<figure>
 						<img src="images/distributedArchitecture1.png">
-						<figcaption>Architecture for mobile network and platform (see below)</figcaption>
+						<figcaption>Architecture for mobile network and platform (see further below)</figcaption>
 					</figure>
 					<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik"
 							title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/"
@@ -1975,7 +1986,7 @@
 				<section>
 					<figure>
 						<img src="images/distributedArchitecture2.png">
-						<figcaption>Architecture for unlicensed LPWAN and platform (see below)</figcaption>
+						<figcaption>Architecture for unlicensed LPWAN and platform (see further below)</figcaption>
 					</figure>
 					<div class="pbverysmall">Icons made by <a href="https://www.flaticon.com/authors/freepik"
 							title="Freepik" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/"
@@ -2112,6 +2123,423 @@
 						<li>Requires a broad view</li>
 						<li>Requires experience</li>
 					</ul>
+				</section>
+			</section>
+			<section>
+				<section id="standardization">
+					<h2>Standardization</h2>
+				</section>
+				<section>
+					<p>Nowadays:</p>
+					<ul>
+						<li>Almost all connected objects systems are closed systems:
+							<ul>
+								<li>Device application exchanges information with only one office application</li>
+								<li>Integrating devices from another manufacturer is usually complex or impossible</li>
+								<li>New function integration by a third party developer is usually complex or impossible
+								</li>
+								<li>Integration of a new type of network by a third party is complex or impossible</li>
+								<li>Integration of a new type of network is complex</li>
+								<li>Etc.</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<p>How to address these constraints?</p>
+				</section>
+				<section>
+					<p>Standardization may help:</p>
+					<ul>
+						<li>Communication protocols</li>
+						<li>Network interfaces</li>
+						<li>System architectures</li>
+						<li>Data structure</li>
+						<li>Data semantics</li>
+						<li>Etc.</li>
+					</ul>
+				</section>
+				<section>
+					<p>Some preexisting applicable standards:</p>
+					<ul>
+						<li><a href="https://www.itu.int/rec/T-REC-V.24-200002-I/en" target="_blank">
+								V.24</a>,
+							<a href="https://www.itu.int/rec/T-REC-V.28-199303-I/en" target="_blank">
+								V.28</a>,
+							<a href="https://global.ihs.com/doc_detail.cfm?&csf=TIA&item_s_key=00125234&item_key_date=870024&input_doc_number=TIA%2FEIA%2D232&input_doc_title=&org_code=TIA"
+								target="_blank">
+								TIA-232</a> (ex RS-232), etc., for serial communication
+						</li>
+						<li><a href="https://www.nxp.com/webapp/Download?colCode=UM10204" target="_blank">
+								I2C</a>,
+							<a href="https://www.iso.org/standard/63648.html" target="_blank">
+								CAN</a>, etc., for serial buses
+						</li>
+						<li><a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=1515"
+								target="_blank">AT commands</a> for cellular network user equipment
+						</li>
+						<li><a href="https://www.wi-fi.org/discover-wi-fi/specifications" target="_blank">
+								Wi-Fi</a>,
+							<a href="https://www.bluetooth.com/specifications/specs/" target="_blank">
+								Bluethooth</a>, etc., for short distance wireless communication
+						</li>
+						<li><a href="https://datatracker.ietf.org/doc/html/rfc791" target="_blank">
+								IPv4</a>,
+							<a href="https://datatracker.ietf.org/doc/html/rfc8200" target="_blank">
+								IPv6</a>,
+							<a href="https://datatracker.ietf.org/doc/html/rfc793" target="_blank">
+								TCP</a>,
+							<a href="https://datatracker.ietf.org/doc/html/rfc768" target="_blank">
+								UDP</a>, etc., for the Internet
+						</li>
+						<li>Etc.</li>
+					</ul>
+					<p>Note: some are <em>de facto</em> standards, some are <em>de jure</em> standards.</p>
+				</section>
+				<section>
+					<p>But new ones were required, mostly for higher layers...</p>
+				</section>
+				<section id="standardization-1">
+					<a href="https://www.onem2m.org/" target="_blank">
+						<img src="images/logo-onem2m-the-iot-standard.png" height="200">
+					</a>
+					<dl>
+						<dt>Mission:</dt>
+						<dd>"We are the global community that develops IoT standards to enable interoperable,
+							secure, and simple-to-deploy services for the IoT ecosystem. oneM2M standards
+							are open, accessible and internationally recognized."</dd>
+					</dl>
+				</section>
+				<section>
+					<h3>Value proposition:</h3>
+					<p>"OneM2M standards allow any IoT application to discover and interact with any IoT device."</p>
+					<div class="pbverysmall">Source: <a href="https://www.onem2m.org/using-onem2m/what-is-onem2m#value"
+							title="oneM2M" target="_blank">oneM2M</a></div>
+				</section>
+				<section>
+					<img src="images/onem2m-csl.png">
+					<div class="pbverysmall">Source: <a href="https://www.onem2m.org/using-onem2m/what-is-onem2m"
+							title="oneM2M" target="_blank">oneM2M</a></div>
+				</section>
+				<section>
+					<h3>Functional architecture</h3>
+					<img src="images/oneM2m-functionalArchitecture.png" height="400">
+					<p class="pbcentersmaller2">AE: Application Entity - CSE: Common Services Entity - NSE: Network
+						Services Entity</p>
+					<div class="pbverysmall">Source: <a
+							href="https://www.onem2m.org/technical/published-specifications/release-4"
+							title="Release 4 Technical Specifications" target="_blank">Release 4 Technical
+							Specifications</a></div>
+				</section>
+				<section>
+					<p>OneM2M standards are transposed by <a href="#/standardization-2">ITU-T</a>.</p>
+					<p class="fragment">There are some <a href="https://wiki.onem2m.org/index.php?title=Open_Source"
+							target="_blank">
+							open source implementations</a>.</p>
+				</section>
+				<section>
+					<p><a href="https://www.onem2m.org/membership/current-members" target="_blank">Members</a>:</p>
+					<ul>
+						<li>Standards development organizations (SDOs):
+							<ul>
+								<li><a href="https://www.arib.or.jp/english/index.html" target="_blank">
+										ARIB (Japan)</a></li>
+								<li><a href="https://www.atis.org/" target="_blank">
+										ATIS (USA)</a></li>
+								<li><a href="http://www.ccsa.org.cn/english/" target="_blank">
+										CCSA (China)</a></li>
+								<li><a href="https://www.etsi.org/" target="_blank">
+										ETSI (Europe)</a></li>
+								<li><a href="https://standards.tiaonline.org/" target="_blank">
+										TIA (USA)</a></li>
+								<li><a href="https://tsdsi.in/" target="_blank">
+										TSDSI (India)</a></li>
+								<li><a href="https://www.tta.or.kr/eng/index.jsp" target="_blank">
+										TTA (Korea)</a></li>
+								<li><a href="https://www.ttc.or.jp/e" target="_blank">
+										TTC (Japan)</a></li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>Two industry fora/consortia:
+							<ul>
+								<li><a href="https://globalplatform.org/" target="_blank">
+										GlobalPlatform</a></li>
+								<li><a href="https://omaspecworks.org/" target="_blank">
+										OMA SpecWorks</a></li>
+							</ul>
+						</li>
+						<li>Members of SDOs</li>
+					</ul>
+				</section>
+				<section id="standardization-2">
+					<div>
+						<a href="https://www.itu.int/en/ITU-T/studygroups/2017-2020/20/Pages/default.aspx"
+							target="_blank">
+							<img src="images/logo-itu.png" height="200">
+						</a>
+						<br>
+						<strong>Study Group 20</strong>
+					</div>
+					<dl>
+						<dt>Mission:</dt>
+						<dd>"Address the standardization requirements of Internet of Things (IoT)
+							technologies, with an initial focus on IoT applications in smart cities
+							and communities (SC&C)"</dd>
+					</dl>
+				</section>
+				<section>
+					<div>
+						<p>
+							The International Telecommunication Union (ITU):
+						</p>
+						<ul>
+							<li>Founded in 1865</li>
+							<li>The United Nations specialized agency in the field of telecommunications,
+								information and communication technologies (ICTs)</li>
+						</ul>
+					</div>
+					<div class="fragment">
+						<p>
+							The ITU Telecommunication Standardization Sector (ITU-T):
+						</p>
+						<ul>
+							<li>Studies technical, operating and tariff questions</li>
+							<li>Issues Recommendations on them with a view to standardizing telecommunications on
+								a worldwide basis</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<p>Study Group 20 roles:</p>
+					<ul>
+						<li>Lead study group on Internet of things (IoT) and its applications</li>
+						<li>Lead study group on smart cities and communities, including its e‑services and smart
+							services</li>
+						<li>Lead study group for Internet of things identification</li>
+					</ul>
+				</section>
+				<section>
+					<p>ITU-T Recommendations under SG20 responsability:</p>
+					<ul>
+						<li><a href="https://www.itu.int/rec/T-REC-F/en" target="_blank">F series</a>:
+							Non-telephone telecommunication services</li>
+						<li><a href="https://www.itu.int/rec/T-REC-H/en" target="_blank">H series</a>:
+							Audiovisual and multimedia systems</li>
+						<li><a href="https://www.itu.int/rec/T-REC-L/en" target="_blank">L series</a>:
+							Environment and ICTs, climate change, e-waste, energy efficiency; construction,
+							installation and protection of cables and other elements of outside plant</li>
+						<li><a href="https://www.itu.int/rec/T-REC-Q/en" target="_blank">Q series</a>:
+							Switching and signalling, and associated measurements and tests</li>
+						<li><a href="https://www.itu.int/rec/T-REC-Y/en" target="_blank">Y series</a>:
+							Global information infrastructure, Internet protocol aspects, next-generation networks,
+							Internet of Things and smart cities</li>
+					</ul>
+				</section>
+				<section>
+					<p>OneM2M standards are transposed under the <a href="https://www.itu.int/rec/T-REC-Y/en"
+							target="_blank">
+							Y.4500 series</a> (17 recommendations).</p>
+				</section>
+				<section>
+					<p>Many other recommendations:</p>
+					<ul class="pbsmaller">
+						<li><a href="https://www.itu.int/rec/T-REC-Y.4000/en" target="_blank">
+								Y.4000 - Overview of the Internet of things</a></li>
+						<li><a href="https://www.itu.int/rec/T-REC-Y.4003/en" target="_blank">
+								Y.4003 - Overview of smart manufacturing in the context of the industrial Internet of
+								things</a></li>
+						<li><a href="https://www.itu.int/rec/T-REC-Y.4100/en" target="_blank">
+								Y.4100 - Common requirements of the Internet of things</a></li>
+						<li><a href="https://www.itu.int/rec/T-REC-Y.4102/en" target="_blank">
+								Y.4102 - Requirements for Internet of things devices and operation of Internet
+								of things applications during disasters</a></li>
+						<li><a href="https://www.itu.int/rec/T-REC-Y.4103/en" target="_blank">
+								Y.4103 - Common requirements for Internet of things (IoT) applications</a></li>
+						<li><a href="https://www.itu.int/rec/T-REC-Y.4111/en" target="_blank">
+								Y.4111 - Semantics based requirements and framework of the Internet of things</a></li>
+						<li><a href="https://www.itu.int/rec/T-REC-Y.4112/en" target="_blank">
+								Y.4112 - Requirements of the plug and play capability of the Internet of things</a></li>
+						<li><a href="https://www.itu.int/rec/T-REC-Y.4401/en" target="_blank">
+								Y.4401 - Functional framework and capabilities of the Internet of things</a></li>
+						<li><a href="https://www.itu.int/rec/T-REC-Y.4480/en" target="_blank">
+								Y.4480 - Low power protocol for wide area wireless networks (LoRaWAN)</a></li>
+						<li>Etc.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Reference model</h3>
+					<img src="images/uitIotReferenceModel.png" height="400">
+					<div class="pbverysmall">Source: <a href="https://www.itu.int/rec/T-REC-Y.4000/en"
+							title="Recommendation Y.4000" target="_blank">Recommendation Y.4000</a> (former Y.2060)
+					</div>
+				</section>
+				<section>
+					<h3>Example - Networked vehicle and ITS infrastructure</h3>
+					<img src="images/itu-networkedVehicles-architecture.png" height="400">
+					<div class="pbverysmall">Source: <a href="https://www.itu.int/rec/T-REC-Y.4407/en"
+							title="Recommendation Y.4407" target="_blank">Recommendation Y.4407</a> (former Y.2281)
+					</div>
+				</section>
+				<section>
+					<p><a href="https://www.itu.int/en/myitu/Membership/ITU-Members" target="_blank">Members</a>:
+						193 states and over 900 companies, universities, research institutes and
+						international and regional organizations</p>
+				</section>
+				<section id="standardization-3">
+					<div>
+						<a href="https://datatracker.ietf.org/group/iotdir/about/" target="_blank">
+							<img src="images/logo-ietf.png" height="200">
+						</a>
+						<br>
+						<strong>Internet of Things Directorate</strong>
+					</div>
+					<dl>
+						<dt>Mission:</dt>
+						<dd>"Coordination within the IETF on IoT-related work, and increasing the visibility
+							and communication between IETF IoT activities and other SDOs, industry alliances,
+							and other organizations."</dd>
+					</dl>
+				</section>
+				<section>
+					<p>
+						The Internet Engineering Task Force (IETF):
+					</p>
+					<ul>
+						<li>large open international community of network designers, operators, vendors, and
+							researchers concerned with the evolution of the Internet architecture and the
+							smooth operation of the Internet.</li>
+					</ul>
+				</section>
+				<section>
+					<p>Some RFCs (originally: Request For Comments):</p>
+					<ul>
+						<li><a href="https://www.rfc-editor.org/rfc/rfc7252" target="_blank">
+								RFC7252: The Constrained Application Protocol (CoAP)</a></li>
+						<li><a href="https://www.rfc-editor.org/rfc/rfc8520.html" target="_blank">
+								RFC8520: Manufacturer Usage Description Specification</a></li>
+						<li><a href="https://www.rfc-editor.org/rfc/rfc8576.html" target="_blank">
+								RFC8576: Internet of Things (IoT) Security: State of the Art and Challenges</a></li>
+						<li><a href="https://www.rfc-editor.org/rfc/rfc8724" target="_blank">
+								RFC8724: SCHC: Generic Framework for Static Context Header Compression and
+								Fragmentation</a></li>
+						<li><a href="https://www.rfc-editor.org/rfc/rfc8949" target="_blank">
+								RFC8949: Concise Binary Object Representation (CBOR)</a></li>
+						<li><a href="https://www.rfc-editor.org/rfc/rfc9006.html" target="_blank">
+								RFC9006: TCP Usage Guidance in the Internet of Things (IoT)</a></li>
+						<li><a href="https://www.rfc-editor.org/rfc/rfc9019.html" target="_blank">
+								RFC9019: A Firmware Update Architecture for Internet of Things</a></li>
+						<li>Etc.</li>
+					</ul>
+				</section>
+				<section id="standardization-4">
+					<div>
+						<a href="https://www.w3.org/WoT/" target="_blank">
+							<img src="images/logo-w3c.png" height="200">
+						</a>
+						<br>
+						<strong>Web of Things</strong>
+					</div>
+					<dl>
+						<dt>Mission:</dt>
+						<dd>"By providing standardized metadata and other re-usable technological building blocks,
+							W3C WoT enables easy integration across IoT platforms and application domains."</dd>
+					</dl>
+				</section>
+				<section>
+					<p>
+						The World Wide Web Consortium (W3C):
+					</p>
+					<ul>
+						<li>International community where Member organizations, a full-time staff, and the public
+							work together to develop Web standards.</li>
+					</ul>
+				</section>
+				<section>
+					<p>Publications:</p>
+					<ul>
+						<li><a href="https://www.w3.org/TR/2020/REC-wot-architecture-20200409/" target="_blank">
+								Web of Things (WoT) Architecture (Recommendation)</a></li>
+						<li><a href="https://www.w3.org/TR/2020/REC-wot-thing-description-20200409/" target="_blank">
+								Web of Things (WoT) Thing Description (Recommendation)</a></li>
+						<li><a href="https://www.w3.org/TR/2020/NOTE-wot-scripting-api-20201124/" target="_blank">
+								Web of Things (WoT) Scripting API (Note)</a></li>
+						<li><a href="https://www.w3.org/TR/2020/NOTE-wot-binding-templates-20200130/" target="_blank">
+								Web of Things (WoT) Binding Templates (Note)</a></li>
+						<li><a href="https://www.w3.org/TR/2019/NOTE-wot-security-20191106/" target="_blank">
+								Web of Things (WoT) Security and Privacy Guidelines (Note)</a></li>
+						<li>Etc.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Web of Things build blocks</h3>
+					<img src="images/wot-mappings.png" height="400">
+					<p class="pbcentersmaller2">TD: Thing Description</p>
+					<div class="pbverysmall">Source: <a href="https://www.w3.org/WoT/documentation/"
+							title="WoT documentation" target="_blank">WoT documentation</a></div>
+				</section>
+
+				<section id="standardization-5">
+					<h3>Many other organizations</h3>
+					<ul>
+						<li><a href="https://aioti.eu/" target="_blank">
+								Alliance for Internet of Things Innovation</a></li>
+						<li><a href="https://csa-iot.org/" target="_blank">
+								Connectivity Standards Alliance (formerly: Zigbee Alliance)</a></li>
+						<li><a href="https://www.dds-foundation.org/" target="_blank">
+								DDS Foundation</a></li>
+						<li><a href="https://ecconsortium.eu/" target="_blank">
+								Edge Computing Consortium Europe</a></li>
+						<li><a href="https://globalplatform.org/" target="_blank">
+								GlobalPlatform</a></li>
+						<li><a href="https://www.iiconsortium.org/index.htm" target="_blank">
+								Industry IoT Consortium</a></li>
+						<li><a href="https://sagroups.ieee.org/2413/" target="_blank">
+								Internet of Things (IoT) Architecture Working Group from IEEE</a></li>
+						<li><a href="https://www.linaro.org/iot-and-embedded/" target="_blank">
+								Linaro - IoT and Embedded</a></li>
+						<li><a href="https://lora-alliance.org/" target="_blank">
+								LoRa Alliance</a></li>
+						<li><a href="https://buildwithmatter.com/" target="_blank">
+								Matter (connected to Connectivity Standards Alliance)</a></li>
+						<li><a href="https://mioty-alliance.com/" target="_blank">
+								mioty alliance</a></li>
+					</ul>
+				</section>
+				<section>
+					<h3>Many other organizations - continued</h3>
+					<ul>
+						<li><a href="https://omaspecworks.org/" target="_blank">
+								OMA SpecWorks</a></li>
+						<li><a href="https://openconnectivity.org/" target="_blank">
+								Open Connectivity Foundation</a></li>
+						<li><a href="https://www.openweightless.org/" target="_blank">
+								Open Weightless</a></li>
+						<li><a href="https://www.threadgroup.org/" target="_blank">
+								Thread Group</a></li>
+						<li><a href="https://www.ulealliance.org/" target="_blank">
+								ULE Alliance</a></li>
+						<li><a href="https://www.wize-alliance.com/" target="_blank">
+								Wize Alliance</a></li>
+						<li><a href="https://z-wavealliance.org/" target="_blank">
+								Z-Wave Alliance</a></li>
+						<li>Etc.</li>
+					</ul>
+				</section>
+				<section>
+					<p>Question: So many standards! What to do with them?</p>
+					<p class="fragment">Answer: What you want &#x1F642;</p>
+					<div class="fragment">
+						<p>More seriously:</p>
+						<ul>
+							<li>Stay informed</li>
+							<li>Listen to your customers</li>
+							<li>Rely on layered architectures with well-defined interfaces</li>
+						</ul>
+					</div>
 				</section>
 			</section>
 			<section>
