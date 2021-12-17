@@ -43,7 +43,7 @@
   line-height: 1.3; 
 }
 
-.reveal ul.pbsmaller, .reveal table.pbsmaller, .reveal p.pbsmaller {
+.reveal ul.pbsmaller, .reveal table.pbsmaller, .reveal p.pbsmaller, div.pbsmaller {
     font-size: 70%; }
 
 .reveal p.pbcentersmaller2 {
@@ -70,4 +70,16 @@
   
 .column {
   flex: 50%;
+}
+
+.pbcolumns { 
+  display: flex; width: 100%; 
+}
+
+.pbcolumns div { 
+  flex-grow: 1; 
+}
+
+.pbcolumns div {
+  padding: 8px;
 }
