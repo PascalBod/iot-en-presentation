@@ -960,6 +960,130 @@
                 </section>
             </section>
             <section>
+                <section id="device-6b">
+                    <h3>Floating-point arithmetic</h3>
+                </section>
+                <section>
+                    <h4>Integer ranges</h4>
+                    <ul>
+                        <li>With <code class="codeinline">n</code> bits:
+                        <ul>
+                            <li>Signed integer: <code class="codeinline">-2<sup>n-1</sup> &mdash; 2<sup>n-1</sup> - 1</code></li>
+                            <li>Unsigned integer: <code class="codeinline">0 &mdash; 2<sup>n</sup> - 1</code></li>
+                        </ul></li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Integer ranges</h4>
+                    <ul>
+                        <li>8 bits:
+                            <ul>
+                                <li><code class="codeinline">-128 &mdash; 127</code></li>
+                                <li><code class="codeinline">0 &mdash; 255</code></li>
+                            </ul>
+                        </li>
+                        <li>32 bits:
+                            <ul>
+                                <li><code class="codeinline">-2,147,483,648 &mdash; 2,147,483,647</code></li>
+                                <li><code class="codeinline">0 &mdash; 4,294,967,296</code></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Problem</h4>
+                    <ul>
+                        <li>How to encode:
+                            <ul>
+                                <li>Very large numbers?</li>
+                                <li>Rational numbers (<code class="codeinline">2/3</code>...)?</li>
+                                <li>Irrational numbers (<code class="codeinline"><math><msqrt><mi>2</mi></msqrt></math></code>...)?</li>
+                                <li>Transcendental numbers (<code class="codeinline">e</code>...)?</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>When are those types of numbers needed?</h4>
+                    <ul>
+                        <li>Calculate (long) distances on Earth's surface</li>
+                        <li>Many other calculations &#x1F642;</li>
+                        <li>Some AI algorithms</li>
+                        <li>etc.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>A solution: floating-point representation</h4>
+                    <ul>
+                        <li><code class="codeinline">sign x significand x base<sup>exponent</sup></code></li>
+                        <li>The significand controls accuracy</li>
+                        <li>The exponent controls range</li>
+                        <li>Base is usually <code class="codeinline">2</code></li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>A standard: IEEE 754</h4>
+                    <ul>
+                        <li>Single precision: 23 bit significand, 8 bit exponent</li>
+                        <li>Double precision: 52 bit significand, 11 bit exponent</li>
+                        <li>...</li>
+                    </ul>
+                    <div class="pbverysmall">Source: <a href="https://ieeexplore.ieee.org/document/8766229"
+                        target="_blank">IEEE 754</a></div>
+                </section>
+                <section>
+                    <h4>Actual IEEE 754 format</h4>
+                    <ul>
+                        <li>Sign: one bit</li>
+                        <li>Significand: a binary fraction, greater than or equal to <code class="codeinline">1</code> 
+                            and less than <code class="codeinline">2</code>. Leading <code class="codeinline">1</code>
+                            is assumed and not encoded &rArr; actually 24 or 53 bits</li>
+                        <li>Exponent: biased, so that resulting value is always positive. Bias is
+                            <code class="codeinline">127</code> or <code class="codeinline">1024</code></li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Some complexity and side effects</h4>
+                    <ul>
+                        <li>Two zero values: a positive one and a negative one</li>
+                        <li>Two infinities</li>
+                        <li>NaN (Not a Number)
+                            <ul>
+                                <li>Quiet NaN (&rArr; indeterminate operation)</li>
+                                <li>Signalling NaN (&rArr; invalid operation)</li>
+                            </ul>
+                        </li>
+                        <li>Denormalized numbers</li>
+                        <li>Rounding &rArr; a calculation result may be different from the theorical value</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Floating-point arithmetic and microcontrollers</h4>
+                    <ul>
+                        <li>Low-cost microcontrollers: no instructions for floating-point arithmetic</li>
+                        <li>Other microcontrollers: Floating-Point Unit (FPU)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>A software solution when no FPU</h4>
+                    <p>Floating-point library:</p>
+                    <ul>
+                        <li>Implements floating-point arithmetic in software</li>
+                        <li>Drawbacks:
+                            <ul>
+                                <li>Increases the size of the application</li>
+                                <li>Increases the number of executed instructions</li>
+                                <li>May be distributed under paid license</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Another solution: use integers only, when possible</h4>
+                    <p>Example: calculating a short distance on Earth's surface (up to a few 10s of km)</p>
+                </section>
+            </section>
+            <section>
                 <section id="device-7">
                     <h3>Software development</h3>
                 </section>
