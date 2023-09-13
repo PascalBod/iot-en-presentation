@@ -294,12 +294,13 @@
                     <img src="images/microcontrollerBoardMemory.png" height="500">
                 </section>
                 <section>
-                    <h4>Bootloader/bootstrap</h4>
+                    <h4>Bootloader</h4>
                     <ul>
-                        <li>Computer: bootstrap (some code in ROM loads some code from a disk that will load the OS)
-                        </li>
-                        <li>Microcontroller board: bootloader (optional - allows easy software update)</li>
+                        <li>Allows easy software update</li>
+                        <li>Waits for binary data, usually provided on a serial link</li>
+                        <li>Is active only under specific conditions (pins set to some levels)</li>
                     </ul>
+                    <p class="pbcenter">Note: depending on the µC, a software update may also be performed <em>Over the Air</em> (OTA)</p>
                 </section>
                 <section>
                     <h4>Architecture of a connected device</h4>
