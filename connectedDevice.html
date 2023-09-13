@@ -178,9 +178,60 @@
                     <img src="images/computerArchitecture.png">
                 </section>
                 <section>
-                    <img src="images/computerMemory.png">
+                    <h4>Von Neumann architecture</h4>
+                    <ul>
+                        <li>Memory stores data and instructions</li>
+                        <li>Same bus for data and instructions</li>
+                    </ul>
                 </section>
                 <section>
+                    <h4>Harvard architecture</h4>
+                    <ul>
+                        <li>Separate memory for data and for instructions</li>
+                        <li>Bus for data and bus for instructions</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Variants exist: same memory but separate buses, etc.</p>
+                </section>
+                <section>
+                    <h4>Reminder: computer boot process</h4>
+                </section>
+                <section>
+                    <ul>
+                        <li>The CPU starts executing a short program in ROM: the <em>bootstrap</em></li>
+                    </ul>
+                    <img src="images/computerBoot-1.png">
+                </section>
+                <section>
+                    <ul>
+                        <li>The bootstrap loads the <em>boot loader</em> from a disk</li>
+                    </ul>
+                    <img src="images/computerBoot-2.png">
+                </section>
+                <section>
+                    <ul>
+                        <li>The bootloader loads the Operating System (OS) from a disk</li>
+                    </ul>
+                    <img src="images/computerBoot-3.png">
+                </section>
+                <section>
+                    <p>Of course, variants exist!</p>
+                    <p>For a PC running Linux:
+                    <ul>
+                        <li>bootstrap: BIOS</li>
+                        <li>bootloading:
+                        <ul>
+                            <li>a first-stage bootloader is read from the Master Boot Record (MBR)</li>
+                            <li>the first-stage bootloader loads a second-stage bootloader</li>
+                            <li>the second-stage bootloader loads the Linux kernel</li>
+                        </ul>
+                        </li>
+                    </ul>
+                    </p>
+                </section>
+                <section>
+                    <h4>Reminder: virtual memory</h4>
                     <img src="images/computerVirtualMemory.png">
                 </section>
 				<section>
