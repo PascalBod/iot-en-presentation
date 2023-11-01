@@ -2,7 +2,7 @@
  * This stylesheet is used to print reveal.js
  * presentations to PDF.
  *
- * https://revealjs.revealjs.com/pdf-export/
+ * https://revealjs.com/pdf-export/
  */
 
 html.print-pdf {
@@ -36,7 +36,6 @@ html.print-pdf {
 
 	.reveal pre code {
 		overflow: hidden !important;
-		font-family: Courier, 'Courier New', monospace !important;
 	}
 
 	.reveal {
@@ -99,7 +98,6 @@ html.print-pdf {
 	.reveal img {
 		box-shadow: none;
 	}
-
 
 	/* Slide backgrounds are placed inside of their slide when exporting to PDF */
 	.reveal .backgrounds {
